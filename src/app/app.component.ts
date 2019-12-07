@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'InteriorWorks';
+
+  constructor(private readonly router: Router) {
+    this.router.navigate(["/"]).then(result=>{window.location.href = '/home.html';})
+    // window.location.href= '/home.html';
+    // router.navigate(['localhost:4200/home.html']);
+  }
 }
