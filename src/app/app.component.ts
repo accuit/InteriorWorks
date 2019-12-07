@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'InteriorWorks';
 
   constructor(private readonly router: Router) {
-    this.router.navigate(["/"]).then(result=>{window.location.href = '/home.html';})
+    // this.router.navigate(["/"]).then(result=>{window.location.href = '/home.html';})
     // window.location.href= '/home.html';
     // router.navigate(['localhost:4200/home.html']);
   }
