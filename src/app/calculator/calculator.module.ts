@@ -4,6 +4,7 @@ import { KitchenComponent } from './kitchen/kitchen.component';
 import { CalculatorComponent } from './calculator.component';
 import { RouterModule } from '@angular/router';
 import { CalculatorRoutingModule } from './calculator-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -12,7 +13,8 @@ import { CalculatorRoutingModule } from './calculator-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    CalculatorRoutingModule
+    CalculatorRoutingModule,
+    SharedModule
   ]
 })
 export class CalculatorModule { }

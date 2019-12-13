@@ -3,18 +3,22 @@ import { CommonModule } from '@angular/common';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { RouterModule } from '@angular/router';
+import { TitleHeaderComponent } from './title-header/title-header.component';
+import { ComponentsModule } from './components/components.module';
 
 
 
 @NgModule({
-  declarations: [MenuHeaderComponent, TopHeaderComponent],
+  declarations: [MenuHeaderComponent, TopHeaderComponent, TitleHeaderComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ComponentsModule
   ],
   exports: [
     MenuHeaderComponent,
-    TopHeaderComponent
+    TopHeaderComponent,
+    TitleHeaderComponent
   ]
 })
 export class SharedModule { }
