@@ -23,25 +23,16 @@
            
         </div>
 
-        <div class="col-md-12">
-             
+        <div class="col-md-12">            
             <div class="price-details">
                 <h3>Step 3</h3>
                 <span class="price">Input Kitchen Measurements</span>
             </div>
-            <div class="description">
-                <div class="cc-selector">
-                    <input id="visa" type="radio" name="credit-card" value="lshape" />
-                    <label class="drinkcard-cc visa" for="L Shape"></label>
-                    <input id="mastercard" type="radio" name="credit-card" value="parallel" />
-                    <label class="drinkcard-cc mastercard"for="mastercard"></label>
-                    <input id="visa" type="radio" name="credit-card" value="straight" />
-                    <label class="drinkcard-cc visa" for="straight"></label>
-                    <input id="mastercard" type="radio" name="credit-card" value="ushaped" />
-                    <label class="drinkcard-cc mastercard"for="ushaped"></label>
-                </div>
-            </div>
+           <ipx-combo-textbox prefix="Prefix"
+           suffix="Feet"
+           (focused)="onInputNumberFocused($event);"
+           (blured)="onInputNumberBlured($event);"
+           (valueChanged)="onValueChanged($event)"></ipx-combo-textbox>
 
-            <div class="post-image opacity"><img src="../../../assets/img/Kitchen/L-Shape.jpg" style="max-width: 700px; max-height: 300px;" alt="" title=""></div>
-           
+            
         </div>

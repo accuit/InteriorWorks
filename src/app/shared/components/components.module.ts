@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  exports: [ComboTextboxComponent],
+  entryComponents: [ComboTextboxComponent]
 })
 export class ComponentsModule { }

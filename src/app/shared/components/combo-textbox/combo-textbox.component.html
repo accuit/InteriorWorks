@@ -1,1 +1,26 @@
-<p>combo-textbox works!</p>
+<!-- <label *ngIf="showLabel" class="ng-cint__ng-cint-title">
+    {{ title }}<span *ngIf="required" class="ng-cint-title__required">*</span>
+    
+  </label> -->
+<div class="col-sm-5">
+    <div class="ng-cint__ng-cint-content">
+
+        <div class="ng-cint-content__ng-cint-field">
+
+            <input type="text" class="ng-cint-field__input" #ngCintInput (keydown)="ngCintValue = manageValue($event, ngCintValue, step);" [ngModel]="ngCintValue">
+
+            <p class="ng-cint-field__ng-cint-controls">
+                <span class="ng-cint-controls__single-control ng-cint-controls__single-control_increment"
+                    (click)="ngCintValue = manageValue($event, ngCintValue, step, 'ArrowUp');">
+                </span>
+                <span class="ng-cint-controls__single-control ng-cint-controls__single-control_decrement"
+                    (click)="ngCintValue = manageValue($event, ngCintValue, step, 'ArrowDown');">
+                </span>
+            </p>
+        </div>
+
+        <p *ngIf="suffix" class="ng-cint-content__label ng-cint-content__label_suffix">
+            {{ suffix }}
+        </p>
+    </div>
+</div>
