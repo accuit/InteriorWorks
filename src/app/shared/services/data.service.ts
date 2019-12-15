@@ -1,0 +1,57 @@
+import { Injectable } from '@angular/core';
+import { Product } from '../model/product';
+import { ProductCategory } from '../model/product-category';
+import { Brand } from '../model/brand';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  constructor() { }
+
+  getProducts(): Array<Product> {
+
+    const products: Product[] = [
+      { id: 1, name: 'Ply Board', title: 'Ply and Board', categories: [1, 2] },
+      { id: 2, name: 'Inner Laminate', title: 'Inner Laminate', categories: [1, 2] },
+      { id: 3, name: 'Outer Finish', title: 'Outer Finish', categories: [1, 2] },
+      { id: 4, name: 'Hinges', title: 'Hinges', categories: [1, 2] },
+      { id: 5, name: 'Channels', title: 'Channels', categories: [1, 2] },
+      { id: 6, name: 'Full', title: 'Full Size', categories: [3] },
+      { id: 7, name: 'Border', title: 'Border and Corners', categories: [3] },
+    ];
+    
+    return products;
+
+  }
+
+  getCategories(): Array<ProductCategory> {
+
+    const products: ProductCategory[] = [
+      { id: 1, name: 'Kitchen', title: 'Kitchen'},
+      { id: 2, name: 'Wardrobe', title: 'Wardrobe'},
+      { id: 3, name: 'False Ceiling', title: 'False Ceiling'}
+    ];
+    
+    return products;
+
+  }
+
+  getBrands(): Array<Brand> {
+
+    const brands: Brand[] = [
+      { id: 1, name: 'Century', title: 'Century', productID: 1},
+      { id: 2, name: 'Virgo', title: 'Virgo', productID: 2},
+      { id: 3, name: 'Wood', title: 'Wood Laminate', productID: 3},
+      { id: 4, name: 'Hettich', title: 'Hettich', productID: 4},
+      { id: 5, name: 'Hettich', title: 'Hettich', productID: 5},
+      { id: 6, name: 'Inox', title: 'Inox', productID: 5},
+      { id: 7, name: 'Wood', title: 'Wood Laminate', productID: 6}
+    ];
+    
+    return brands;
+
+  }
+
+}

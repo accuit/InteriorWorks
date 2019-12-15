@@ -5,6 +5,7 @@ import { CalculatorComponent } from './calculator.component';
 import { RouterModule } from '@angular/router';
 import { CalculatorRoutingModule } from './calculator-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [KitchenComponent, CalculatorComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     CalculatorRoutingModule,
     SharedModule

@@ -7,14 +7,16 @@
 
         <div class="ng-cint-content__ng-cint-field">
 
-            <input type="text" class="ng-cint-field__input" #ngCintInput (keydown)="ngCintValue = manageValue($event, ngCintValue, step);" [ngModel]="ngCintValue">
+            <input type="text" 
+            [value]="feetValue" class="ng-cint-field__input" #customInput 
+            (keydown)="manageValue($event, ngCintValue, step);">
 
             <p class="ng-cint-field__ng-cint-controls">
                 <span class="ng-cint-controls__single-control ng-cint-controls__single-control_increment"
-                    (click)="ngCintValue = manageValue($event, ngCintValue, step, 'ArrowUp');">
+                    (click)="manageValue($event, value, step, 'ArrowUp');">
                 </span>
                 <span class="ng-cint-controls__single-control ng-cint-controls__single-control_decrement"
-                    (click)="ngCintValue = manageValue($event, ngCintValue, step, 'ArrowDown');">
+                    (click)="manageValue($event, value, step, 'ArrowDown');">
                 </span>
             </p>
         </div>

@@ -1,38 +1,70 @@
+<!-- .product -->
+<div class="col-md-12">
 
-         <!-- .product -->
-         <div class="col-md-12">
-             
-            <div class="price-details">
-                <h3>Step 2</h3>
-                <span class="price">Choose the Layout of Kitchen</span>
-            </div>
-            <div class="description">
-                <div class="cc-selector">
-                    <input id="visa" type="radio" name="credit-card" value="lshape" />
-                    <label class="drinkcard-cc visa" for="L Shape"></label>
-                    <input id="mastercard" type="radio" name="credit-card" value="parallel" />
-                    <label class="drinkcard-cc mastercard"for="mastercard"></label>
-                    <input id="visa" type="radio" name="credit-card" value="straight" />
-                    <label class="drinkcard-cc visa" for="straight"></label>
-                    <input id="mastercard" type="radio" name="credit-card" value="ushaped" />
-                    <label class="drinkcard-cc mastercard"for="ushaped"></label>
-                </div>
-            </div>
-
-            <div class="post-image opacity"><img src="../../../assets/img/Kitchen/L-Shape.jpg" style="max-width: 700px; max-height: 300px;" alt="" title=""></div>
-           
+    <div class="price-details">
+        <h3>Step 2</h3>
+        <span class="price">Choose the Layout of Kitchen</span>
+    </div>
+    <div class="description">
+        <div class="cc-selector">
+            <input id="visa" type="radio" name="credit-card" value="lshape" />
+            <label class="drinkcard-cc visa" for="L Shape"></label>
+            <input id="mastercard" type="radio" name="credit-card" value="parallel" />
+            <label class="drinkcard-cc mastercard" for="mastercard"></label>
+            <input id="visa" type="radio" name="credit-card" value="straight" />
+            <label class="drinkcard-cc visa" for="straight"></label>
+            <input id="mastercard" type="radio" name="credit-card" value="ushaped" />
+            <label class="drinkcard-cc mastercard" for="ushaped"></label>
         </div>
+    </div>
 
-        <div class="col-md-12">            
-            <div class="price-details">
-                <h3>Step 3</h3>
-                <span class="price">Input Kitchen Measurements</span>
+    <div class="post-image opacity"><img src="../../../assets/img/Kitchen/L-Shape.jpg"
+            style="max-width: 700px; max-height: 300px;" alt="" title=""></div>
+
+</div>
+
+<div class="col-md-12">
+    <div class="price-details">
+        <h3>Step 3</h3>
+        <span class="price">Input Kitchen Measurements</span>
+    </div>
+    <!-- <ipx-combo-textbox prefix="Prefix" suffix="Feet" [(ngModel)]="A"></ipx-combo-textbox>   -->
+
+</div>
+
+<div class="col-md-12">
+    <div class="price-details">
+        <h3>Step 4</h3>
+        <span class="price"> Kitchen Height</span>
+    </div>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Roof Top
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Standard
+    </label>
+</div>
+
+<div class="col-md-12">
+    <div class="price-details">
+        <h3>Step 5</h3>
+        <span class="price"> Material Quality / Brand Selection </span>
+    </div>
+    <div class="row">
+
+        <div class="form-group">
+            <div class="col-sm-3">
+                <h4>Material</h4>
             </div>
-           <ipx-combo-textbox prefix="Prefix"
-           suffix="Feet"
-           (focused)="onInputNumberFocused($event);"
-           (blured)="onInputNumberBlured($event);"
-           (valueChanged)="onValueChanged($event)"></ipx-combo-textbox>
-
-            
+            <div class="col-sm-4">
+                <h4>Brand</h4>
+            </div>
         </div>
+    
+    
+    </div>
+    <div *ngFor="let product of products">
+        <ipx-custom-dropdown [product]="product" [(ngModel)]="selectedBrand" name="brand_product.id"></ipx-custom-dropdown>
+    </div>
+   
+</div>

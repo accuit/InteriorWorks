@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef, Output, Input, EventEmitter, HostListener, HostBinding, ViewChild, ElementRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
     selector: 'ipx-combo-textbox',
@@ -17,27 +17,37 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
             multi: true,
         }]
 })
-export class ComboTextboxComponent implements ControlValueAccessor, Validator {
+export class ComboTextboxComponent implements ControlValueAccessor {
+
+    private dimensions : Dimension = { feet: 0, inches: 0}
+    feetValue: any = 0;
+    onChange: (feetValue: any) => void;
+    onTouched: () => void;
 
 
-    @HostBinding('class.ng-cint') true;
-    @ViewChild('ngCintInput', { static: true }) ngCintInput: ElementRef;
+    valueChanged(value: any) {
+        this.writeValue(value);
+    }
 
-    @Input() showLabel: boolean = true;
-    @Input('label') title: string = 'Counter with a label:';
-    @Input() required: boolean = true;
+    writeValue(obj: any = 0): void {
+        this.feetValue = obj === null ? 0 : obj;
+    }
+
+    registerOnChange(fn: (feetValue: any) => void): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: () => void): void {
+        this.onTouched = fn;
+    }
+
     @Input() prefix: string = '';
     @Input() suffix: string = '';
-    @Input('value') ngCintValue: number = 0;
     @Input() step: number = 1;
     minValue: number = 0;
     maxValue: number = 100;
 
     availableControlKeys: string[] = ['Backspace', 'Space', 'ArrowUp', 'ArrowDown'];
-
-    @Output() focused: EventEmitter<any> = new EventEmitter();
-    @Output() blured: EventEmitter<any> = new EventEmitter();
-    @Output() valueChanged: EventEmitter<any> = new EventEmitter();
 
     @HostListener('mousewheel', ['$event'])
     changeStep(event) {
@@ -52,13 +62,10 @@ export class ComboTextboxComponent implements ControlValueAccessor, Validator {
         }
     }
 
-    /**
-     * @method manageValue
-     */
-    manageValue(event, currentValue, step, arrowChanged?, clipboardValue?) {
+    manageValue(event, currentValue, step, arrowChanged?, clipboardValue?): void {
         event.preventDefault();
 
-        let newValue;
+        let newValue: number;
         let usedControlKeys;
         let charCode = String.fromCharCode(event.which).toLowerCase();
 
@@ -71,18 +78,14 @@ export class ComboTextboxComponent implements ControlValueAccessor, Validator {
         if (usedControlKeys.length) {
             newValue = this.modifiedValue(usedControlKeys[0], currentValue, step);
         } else if (event.type === 'paste') {
-            newValue = this.processInsertedValue(clipboardValue, currentValue);
+            newValue = +this.processInsertedValue(clipboardValue, currentValue);
         } else {
             newValue = this.inputValue(event.key, currentValue);
         }
-
-        this.valueChanged.emit(newValue);
-        return newValue;
+        this.feetValue = newValue;
+        this.onChange(newValue);
     }
 
-    /**
-     * @method modifiedValue
-     */
     modifiedValue(usedControl, currentValue, stepChange) {
 
         switch (usedControl) {
@@ -104,9 +107,6 @@ export class ComboTextboxComponent implements ControlValueAccessor, Validator {
         }
     }
 
-    /**
-     * @method increaseValue
-     */
     increaseValue(currentValue, stepChange) {
         if (currentValue && this.maxValue) {
             return currentValue < this.maxValue ? Number(currentValue) + stepChange : currentValue;
@@ -124,9 +124,6 @@ export class ComboTextboxComponent implements ControlValueAccessor, Validator {
         return currentValue && currentValue > this.minValue ? Number(currentValue) - stepChange : 0;
     }
 
-    /**
-     * @method inputValue
-     */
     inputValue(usedKey, currentValue) {
         if (isNaN(usedKey)) { return currentValue; }
 
@@ -139,66 +136,35 @@ export class ComboTextboxComponent implements ControlValueAccessor, Validator {
         }
     }
 
-    /**
-     * @method processInsertedValue
-     */
     processInsertedValue(clipboardValue, currentValue) {
         const passedValue = parseInt(clipboardValue, 10);
     }
 
+    // // change events from the textarea
+    // private onChange(event) {
 
-    private jsonString: string;
-    private parseError: boolean;
-    private data: any;
+    //     // get value from text area
+    //     let newValue = event.target.value;
 
-    // this is the initial value set to the component
-    public writeValue(obj: any) {
-        if (obj) {
-            this.data = obj;
-            // this will format it with 4 character spacing
-            this.jsonString = JSON.stringify(this.data, undefined, 4);
-        }
-    }
+    //     try {
+    //         // parse it to json
+    //         this.data = JSON.parse(newValue);
+    //         this.parseError = false;
+    //     } catch (ex) {
+    //         // set parse error if it fails
+    //         this.parseError = true;
+    //     }
 
-    // registers 'fn' that will be fired wheb changes are made
-    // this is how we emit the changes back to the form
-    public registerOnChange(fn: any) {
-        this.propagateChange = fn;
-    }
+    //     // update the form
+    //     this.propagateChange(this.data);
+    // }
 
-    // validates the form, returns null when valid else the validation object
-    // in this case we're checking if the json parsing has passed or failed from the onChange method
-    public validate(c: FormControl) {
-        return (!this.parseError) ? null : {
-            jsonParseError: {
-                valid: false,
-            },
-        };
-    }
+    // // the method set in registerOnChange to emit changes back to the form
+    // private propagateChange = (_: any) => { };
 
-    // not used, used for touch input
-    public registerOnTouched() { }
+}
 
-    // change events from the textarea
-    private onChange(event) {
-
-        // get value from text area
-        let newValue = event.target.value;
-
-        try {
-            // parse it to json
-            this.data = JSON.parse(newValue);
-            this.parseError = false;
-        } catch (ex) {
-            // set parse error if it fails
-            this.parseError = true;
-        }
-
-        // update the form
-        this.propagateChange(this.data);
-    }
-
-    // the method set in registerOnChange to emit changes back to the form
-    private propagateChange = (_: any) => { };
-
+export class Dimension{
+    feet: number;
+    inches: number;
 }
