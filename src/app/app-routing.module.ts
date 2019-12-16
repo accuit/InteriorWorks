@@ -13,6 +13,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   { path: 'calculator', loadChildren: () => import(`./calculator/calculator.module`).then(m => m.CalculatorModule) },
+  { path: 'example-page', loadChildren: () => import(`./dev-pages/dev-pages.module`).then(m => m.DevPagesModule) },
 ];
 
 @NgModule({

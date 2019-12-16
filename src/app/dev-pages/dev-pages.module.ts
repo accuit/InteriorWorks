@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ComboBoxExampleComponent } from './combo-box-example/combo-box-example.component';
+import { DevPagesComponent } from './dev-pages.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DevPagesRoutingModule } from './dev-pages-routing.module';
+
+
+@NgModule({
+  declarations: [ComboBoxExampleComponent, DevPagesComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    DevPagesRoutingModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
+})
+export class DevPagesModule { }

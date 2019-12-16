@@ -7,6 +7,8 @@ import { CalculatorModule } from './calculator/calculator.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { DevPagesModule } from './dev-pages/dev-pages.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     CalculatorModule,
-    SharedModule
+    SharedModule,
+    DevPagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

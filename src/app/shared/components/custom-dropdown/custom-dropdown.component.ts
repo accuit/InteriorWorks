@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, HostBinding } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Product } from '../../model/product';
 import { Brand } from '../../model/brand';
+
+let nextId = 0;
 
 @Component({
   selector: 'ipx-custom-dropdown',
@@ -15,20 +17,28 @@ import { Brand } from '../../model/brand';
       multi: true
     }]
 })
+
 export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
 
   @Input('product') product: Product;
   products: any;
   private brand: Brand;
-  onChange: (brand: Brand) => void;
+  _onChange: (brand: Brand) => void;
   onTouched: () => void;
   isDisabled: boolean;
+  brands: Brand[];
+
+
+  @HostBinding('attr.id')
+  @Input() public id = `igx-radio-${nextId++}`;
+  public inputId = `${this.id}-input`;
+
+  @Input() public name: string;
 
   constructor(private readonly dataService: DataService) { }
 
   ngOnInit() {
-    this.getProductBrands();
-
+    this.brands = this.dataService.getBrands().filter(x => x.productID === this.product.id);
   }
 
   writeValue(obj: any) {
@@ -36,22 +46,22 @@ export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
   }
 
   registerOnChange(fn: (brand: any) => void) {
-    this.onChange = fn;
+    this._onChange = fn;
   }
 
   registerOnTouched(fn: () => void) {
     this.onTouched = fn;
   }
 
-  getProductBrands() {
-    return this.dataService.getBrands().filter(x => x.productID === this.product.id);
+  isSelect(brandId: number): boolean {
+    return !this.brand ? false : (brandId === this.brand.id);
   }
 
   onValueChange(e) {
     const Id = parseInt(e.target.value);
-    const brand = this.getProductBrands().find(x => x.productID === Id);
+    const brand = this.brands.find(x => x.productID === Id);
     this.writeValue(brand);
-    this.onChange(brand);
+    this._onChange(brand);
   }
 
 }

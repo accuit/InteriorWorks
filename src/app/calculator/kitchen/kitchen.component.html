@@ -28,7 +28,7 @@
         <h3>Step 3</h3>
         <span class="price">Input Kitchen Measurements</span>
     </div>
-    <!-- <ipx-combo-textbox prefix="Prefix" suffix="Feet" [(ngModel)]="A"></ipx-combo-textbox>   -->
+    <!-- <ipx-combo-textbox [prefix]="'Prefix'" [suffix]="'Feet'" [(ngModel)]="A"></ipx-combo-textbox>   -->
 
 </div>
 
@@ -64,7 +64,35 @@
     
     </div>
     <div *ngFor="let product of products">
-        <ipx-custom-dropdown [product]="product" [(ngModel)]="selectedBrand" name="brand_product.id"></ipx-custom-dropdown>
+        <ipx-custom-dropdown [product]="product" [(ngModel)]="selectedBrand" [name]="product.name"></ipx-custom-dropdown>
     </div>
    
+</div>
+
+<div class="col-md-12">
+    <div class="price-details">
+        <h3>Step 6</h3>
+        <span class="price"> Extra Hardware Accessories</span>
+    </div>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> Tall Unit
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> Rolling Shutter
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> Owen/ Microwave Unit
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox4" value="option4"> S Corner Unit
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox5" value="option5"> Glass Aluminium Shutters
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox6" value="option6"> Door Lift System
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox7" value="option7"> Chminey
+      </label>
 </div>

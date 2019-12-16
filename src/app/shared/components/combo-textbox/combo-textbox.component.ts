@@ -1,5 +1,7 @@
 import { Component, OnInit, forwardRef, Output, Input, EventEmitter, HostListener, HostBinding, ViewChild, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
+import { Dimension } from '../../enums/app.enums';
+import { Unit } from '../../model/core.model';
 
 @Component({
     selector: 'ipx-combo-textbox',
@@ -19,9 +21,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 })
 export class ComboTextboxComponent implements ControlValueAccessor {
 
-    private dimensions : Dimension = { feet: 0, inches: 0}
-    feetValue: any = 0;
-    onChange: (feetValue: any) => void;
+    private unit: Unit = { feet: 0, inches: 0, type: Dimension.LENGTH };
+    feet: any;
+    _onChange: (feetValue: any) => void;
     onTouched: () => void;
 
 
@@ -30,11 +32,11 @@ export class ComboTextboxComponent implements ControlValueAccessor {
     }
 
     writeValue(obj: any = 0): void {
-        this.feetValue = obj === null ? 0 : obj;
+        this.feet = obj === null ? 0 : obj;
     }
 
     registerOnChange(fn: (feetValue: any) => void): void {
-        this.onChange = fn;
+        this._onChange = fn;
     }
 
     registerOnTouched(fn: () => void): void {
@@ -82,8 +84,8 @@ export class ComboTextboxComponent implements ControlValueAccessor {
         } else {
             newValue = this.inputValue(event.key, currentValue);
         }
-        this.feetValue = newValue;
-        this.onChange(newValue);
+        this.feet = newValue;
+        this._onChange(newValue);
     }
 
     modifiedValue(usedControl, currentValue, stepChange) {
@@ -117,9 +119,6 @@ export class ComboTextboxComponent implements ControlValueAccessor {
         }
     }
 
-    /**
-     * @method decreaseValue
-     */
     decreaseValue(currentValue, stepChange) {
         return currentValue && currentValue > this.minValue ? Number(currentValue) - stepChange : 0;
     }
@@ -164,7 +163,5 @@ export class ComboTextboxComponent implements ControlValueAccessor {
 
 }
 
-export class Dimension{
-    feet: number;
-    inches: number;
-}
+
+
