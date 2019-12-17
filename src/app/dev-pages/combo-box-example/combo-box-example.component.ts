@@ -8,15 +8,16 @@ import { Dimension } from 'src/app/shared/enums/app.enums';
   styleUrls: ['./combo-box-example.component.scss']
 })
 export class ComboBoxExampleComponent implements OnInit {
-  unitValue: any;
 
-  A: Unit = { feet: 0, inches: 0, type: Dimension.LENGTH };
+  dimension = Dimension.LENGTH;
+  A: Unit;
   B: Unit = { feet: 0, inches: 0, type: Dimension.WIDTH };
   C: Unit = { feet: 0, inches: 0, type: Dimension.HEIGHT };
 
   constructor() { }
 
   ngOnInit() {
+    this.A= { feet: 10, inches: 20, type: Dimension.LENGTH };
   }
 
 }

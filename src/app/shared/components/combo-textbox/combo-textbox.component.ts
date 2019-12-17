@@ -2,54 +2,29 @@ import { Component, OnInit, forwardRef, Output, Input, EventEmitter, HostListene
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Dimension } from '../../enums/app.enums';
 import { Unit } from '../../model/core.model';
+import { ElementBaseComponent } from '../element.base/element.base.component';
 
 @Component({
     selector: 'ipx-combo-textbox',
     templateUrl: './combo-textbox.component.html',
-    styleUrls: ['./combo-textbox.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ComboTextboxComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => ComboTextboxComponent),
-            multi: true,
-        }]
+    styleUrls: ['./combo-textbox.component.scss']
 })
-export class ComboTextboxComponent implements ControlValueAccessor {
+export class ComboTextboxComponent extends ElementBaseComponent<Unit> implements OnInit {
 
-    private unit: Unit = { feet: 0, inches: 0, type: Dimension.LENGTH };
-    feet: any;
-    _onChange: (feetValue: any) => void;
-    onTouched: () => void;
-
-
-    valueChanged(value: any) {
-        this.writeValue(value);
-    }
-
-    writeValue(obj: any = 0): void {
-        this.feet = obj === null ? 0 : obj;
-    }
-
-    registerOnChange(fn: (feetValue: any) => void): void {
-        this._onChange = fn;
-    }
-
-    registerOnTouched(fn: () => void): void {
-        this.onTouched = fn;
-    }
-
-    @Input() prefix: string = '';
+    @Input() dimension: Dimension;
     @Input() suffix: string = '';
     @Input() step: number = 1;
+
     minValue: number = 0;
     maxValue: number = 100;
-
     availableControlKeys: string[] = ['Backspace', 'Space', 'ArrowUp', 'ArrowDown'];
+   
+    identifier: string;
+
+    ngOnInit(): any {
+        // this.value = null? { feet: 0, inches: 0, type: this.dimension }: this.value;
+        this.identifier = this.getId('combo');
+    }
 
     @HostListener('mousewheel', ['$event'])
     changeStep(event) {
@@ -84,7 +59,7 @@ export class ComboTextboxComponent implements ControlValueAccessor {
         } else {
             newValue = this.inputValue(event.key, currentValue);
         }
-        this.feet = newValue;
+        // this.unit.feet = newValue;
         this._onChange(newValue);
     }
 

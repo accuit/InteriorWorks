@@ -1,5 +1,5 @@
 export enum Dimension {
-    LENGTH = 'length',
-    WIDTH = 'after',
-    HEIGHT = 'height'
+    LENGTH = 'A',
+    WIDTH = 'B',
+    HEIGHT = 'C'
 }
