@@ -3,13 +3,7 @@ import { NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/for
 import * as _ from 'underscore';
 
 @Component({
-  template: '',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ElementBaseComponent),
-      multi: true,
-    }]
+  template: ''
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ElementBaseComponent<T = any> implements ControlValueAccessor {
@@ -21,11 +15,12 @@ export class ElementBaseComponent<T = any> implements ControlValueAccessor {
 
   private _val: T;
   get value(): T {
-    return this._val;
+      return this._val;
   }
   set value(value: T) {
     if (value) {
       this._val = value;
+      this._onChange(this._val);
     }
   }
 
@@ -57,7 +52,9 @@ export class ElementBaseComponent<T = any> implements ControlValueAccessor {
   _onTouch: any = () => { };
 
   writeValue = (value: T) => {
-    this.value = value;
+    if (value !== undefined) {
+      this.value = value;
+    }
   }
 
   registerOnChange = (fn: any) => {

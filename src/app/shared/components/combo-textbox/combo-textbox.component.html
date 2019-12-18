@@ -1,17 +1,14 @@
-<div class="bs-example col-sm-6">
-    <div  class="form-inline">
+
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="border-radius: 4px; border: 1px solid #ccc;"> {{ dimension }} </div>
                 <div class="input-group-addon"  style="background-color: #ffffff; border: 0px solid #ccc;">
                     &nbsp; </div>
-                <input class="form-control"  [id]="identifier" [(ngModel)]="value.feet" placeholder="Feet" type="text">
+                <input class="form-control"  [id]="identifier + '_feet'" [value]="value.feet" [(ngModel)]="value.feet" placeholder="Feet" type="text">
                 <div class="input-group-addon">Feet</div>
                 <div class="input-group-addon" style="background-color: #ffffff; border: 0px solid #ccc;">
                     &nbsp; </div>
-                <input class="form-control" id="exampleInputAmount" placeholder="Amount" type="text">
+                <input class="form-control" [id]="identifier + '_inches'" [value]="value.inches" [(ngModel)]="value.inches" placeholder="Inches" type="text">
                 <div class="input-group-addon">Inches</div>
             </div>
         </div>
-    </div>
-</div>

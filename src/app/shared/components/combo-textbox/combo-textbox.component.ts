@@ -12,17 +12,17 @@ import { ElementBaseComponent } from '../element.base/element.base.component';
 export class ComboTextboxComponent extends ElementBaseComponent<Unit> implements OnInit {
 
     @Input() dimension: Dimension;
-    @Input() suffix: string = '';
+    @Input() suffix: string ;
     @Input() step: number = 1;
 
     minValue: number = 0;
     maxValue: number = 100;
     availableControlKeys: string[] = ['Backspace', 'Space', 'ArrowUp', 'ArrowDown'];
-   
+
     identifier: string;
 
     ngOnInit(): any {
-        // this.value = null? { feet: 0, inches: 0, type: this.dimension }: this.value;
+        // this.value === undefined ? { feet: 0, inches: 0, type: this.dimension } : this.value;
         this.identifier = this.getId('combo');
     }
 

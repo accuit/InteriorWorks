@@ -6,16 +6,20 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-        <div class="cc-selector">
-            <input id="visa" type="radio" name="credit-card" value="lshape" />
-            <label class="drinkcard-cc visa" for="L Shape"></label>
-            <input id="mastercard" type="radio" name="credit-card" value="parallel" />
-            <label class="drinkcard-cc mastercard" for="mastercard"></label>
-            <input id="visa" type="radio" name="credit-card" value="straight" />
-            <label class="drinkcard-cc visa" for="straight"></label>
-            <input id="mastercard" type="radio" name="credit-card" value="ushaped" />
-            <label class="drinkcard-cc mastercard" for="ushaped"></label>
-        </div>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="L" value="L"> L Shape (L)
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="P" value="P">
+            Parallel (||)
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="U" value="U"> U Shape (U)
+            Cieling
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="S" value="S"> Single Side (|)
+        </label>
     </div>
 
     <div class="post-image opacity"><img src="../../../assets/img/Kitchen/L-Shape.jpg"
@@ -28,8 +32,9 @@
         <h3>Step 3</h3>
         <span class="price">Input Kitchen Measurements</span>
     </div>
-    <!-- <ipx-combo-textbox [prefix]="'Prefix'" [suffix]="'Feet'" [(ngModel)]="A"></ipx-combo-textbox>   -->
-
+    <ipx-combo-textbox [dimension]="A.type" name="A" [(ngModel)]="A"></ipx-combo-textbox>
+    <ipx-combo-textbox [dimension]="B.type" name="B" [(ngModel)]="B"></ipx-combo-textbox>
+    <ipx-combo-textbox [dimension]="C.type" name="C" [(ngModel)]="C"></ipx-combo-textbox>
 </div>
 
 <div class="col-md-12">
