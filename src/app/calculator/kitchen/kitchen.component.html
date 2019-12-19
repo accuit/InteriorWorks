@@ -6,25 +6,11 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="L" value="L"> L Shape (L)
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="P" value="P">
-            Parallel (||)
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="U" value="U"> U Shape (U)
-            Cieling
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="S" value="S"> Single Side (|)
-        </label>
+            <ipx-radio-button [items]="kitchens" [(ngModel)]="selectedItem" (change)="switchKitchenLayout($event)" ></ipx-radio-button>
     </div>
 
-    <div class="post-image opacity"><img src="../../../assets/img/Kitchen/L-Shape.jpg"
-            style="max-width: 700px; max-height: 300px;" alt="" title=""></div>
-
+    <div class="post-image opacity"><img [src]="selectedItem.imageUrl"
+            style="max-width: 700px; max-height: 300px;" [alt]="selectedItem.name" [title]="selectedItem.name"></div>
 </div>
 
 <div class="col-md-12">

@@ -5,17 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
 import { ElementBaseComponent } from './element.base/element.base.component';
 import { TextFieldComponent } from './text-field/text-field.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
 
 
 
 @NgModule({
-  declarations: [ComboTextboxComponent, CustomDropdownComponent, ElementBaseComponent, TextFieldComponent],
+  declarations: [ComboTextboxComponent, CustomDropdownComponent, ElementBaseComponent, TextFieldComponent, RadioButtonComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [ComboTextboxComponent, CustomDropdownComponent, ElementBaseComponent, TextFieldComponent],
-  entryComponents: [ComboTextboxComponent, CustomDropdownComponent, TextFieldComponent]
+  exports: [ComboTextboxComponent, CustomDropdownComponent, ElementBaseComponent, TextFieldComponent, RadioButtonComponent],
+  entryComponents: [ CustomDropdownComponent, TextFieldComponent]
 })
 export class ComponentsModule { }

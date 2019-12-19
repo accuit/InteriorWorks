@@ -1,0 +1,11 @@
+<ng-container *ngFor="let item of items">
+	<label class="container">
+  <input 
+  type="radio" 
+  [value]="item"
+  [(ngModel)]="item"
+  (ngModelChange)="change($event)"
+  name="identifier" />{{item.name}}
+  <span (click)="onChange(checked)"></span>
+</label>
+</ng-container>
