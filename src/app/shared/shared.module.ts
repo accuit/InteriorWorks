@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TitleHeaderComponent } from './title-header/title-header.component';
 import { ComponentsModule } from './components/components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { DirectiveModule } from './directive/directive.module';
 
 
 @NgModule({
@@ -16,10 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    DirectiveModule
   ],
   exports: [
     ComponentsModule,
+    DirectiveModule,
     MenuHeaderComponent,
     TopHeaderComponent,
     TitleHeaderComponent

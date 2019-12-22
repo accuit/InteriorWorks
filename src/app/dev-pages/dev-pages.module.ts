@@ -6,10 +6,11 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DevPagesRoutingModule } from './dev-pages-routing.module';
+import { DropdownExampleComponent } from './dropdown/dropdown-example.component';
 
 
 @NgModule({
-  declarations: [ComboBoxExampleComponent, DevPagesComponent],
+  declarations: [ComboBoxExampleComponent, DevPagesComponent, DropdownExampleComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -33,8 +33,12 @@
 
 
 <div data-example-id="form-control-column-sizing" class="bs-example">
-    <ipx-radio-button [items]="kitchens" [(ngModel)]="selectedItem" ></ipx-radio-button>
-    {{selectedItem | json}}
+    <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="L" required="true" (change)="onRadioChange($event)">
+        <ipx-radio class="radio-sample" *ngFor="let item of kitchens" value="{{item.value}}">
+            {{item.name}}
+        </ipx-radio>
+    </ipx-radio-group>
+   Selected item:  {{selectedValue | json}}
 </div>
 <br>
 <br>

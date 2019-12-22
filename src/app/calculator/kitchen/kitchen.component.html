@@ -6,24 +6,28 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-            <ipx-radio-button [items]="kitchens" [(ngModel)]="selectedItem" (change)="switchKitchenLayout($event)" ></ipx-radio-button>
-    </div>
-
-    <div class="post-image opacity"><img [src]="selectedItem.imageUrl"
+            <!-- <ipx-radio-button [items]="kitchens" [(ngModel)]="selectedItem.value" (_change)="switchKitchenLayout($event)" ></ipx-radio-button> -->
+            <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="L" required="true" (change)="onRadioChange($event)">
+                <ipx-radio class="radio-sample" *ngFor="let item of kitchens" value="{{item.value}}">
+                    {{item.name}}
+                </ipx-radio>
+            </ipx-radio-group>
+        </div>
+    <div class="post-image opacity"><img [src]="kitchenImage"
             style="max-width: 700px; max-height: 300px;" [alt]="selectedItem.name" [title]="selectedItem.name"></div>
-</div>
+    </div>
 
 <div class="col-md-12">
     <div class="price-details">
         <h3>Step 3</h3>
         <span class="price">Input Kitchen Measurements</span>
     </div>
-    <ipx-combo-textbox [dimension]="A.type" name="A" [(ngModel)]="A"></ipx-combo-textbox>
-    <ipx-combo-textbox [dimension]="B.type" name="B" [(ngModel)]="B"></ipx-combo-textbox>
-    <ipx-combo-textbox [dimension]="C.type" name="C" [(ngModel)]="C"></ipx-combo-textbox>
+    <ipx-combo-textbox *ngIf="selectedItem.sides > 0" [dimension]="A.type" name="A" [(ngModel)]="A"></ipx-combo-textbox>
+    <ipx-combo-textbox *ngIf="selectedItem.sides > 1" [dimension]="B.type" name="B" [(ngModel)]="B"></ipx-combo-textbox>
+    <ipx-combo-textbox *ngIf="selectedItem.sides > 2" [dimension]="C.type" name="C" [(ngModel)]="C"></ipx-combo-textbox>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-12" style="padding-bottom: 50px;">
     <div class="price-details">
         <h3>Step 4</h3>
         <span class="price"> Kitchen Height</span>
@@ -54,9 +58,12 @@
     
     
     </div>
-    <div *ngFor="let product of products">
-        <ipx-custom-dropdown [product]="product" [(ngModel)]="selectedBrand" [name]="product.name"></ipx-custom-dropdown>
-    </div>
+ 
+    <ipx-dropdown class="col-sm-8" [options]="product1Brands" [label]="label" apply-edited [displayField]="'name'" required
+    [(ngModel)]="selectedBrand1"></ipx-dropdown>
+
+{{selectedBrand1| json}}
+
    
 </div>
 

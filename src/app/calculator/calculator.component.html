@@ -18,25 +18,16 @@
                             <span class="price">Choose the product</span>
                         </div>
                         <div class="description">
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Kitchen
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                Wardrobe
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> False
-                                Cieling
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Paint
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Titles
-                            </label>
+                            <!-- <ipx-radio-button [items]="items" [(ngModel)]="selectedItem.value" (change)="switchItems($event)" ></ipx-radio-button> -->
+                       
+                            <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="Kitchen" required="true" (change)="onRadioChange($event)">
+                                <ipx-radio class="radio-sample" *ngFor="let item of items" value="{{item.value}}">
+                                    {{item.value}}
+                                </ipx-radio>
+                            </ipx-radio-group>
                         </div>
-                        <app-kitchen></app-kitchen>
+                        {{selectedItem | json}}
+                        <app-kitchen *ngIf="selectedItem.key === 1"></app-kitchen>
                     </div>
                 </div>
             </div>
