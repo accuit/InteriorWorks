@@ -19,6 +19,8 @@ export class KitchenComponent implements OnInit {
   kitchenProducts: Product[];
   kitchenCategoryID = 1;
   selectedBrand: Brand = new Brand();
+  kitchenHeight: any;
+  layout = 'L';
   kitchens: Kitchen[] = [
     { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' },
     { sides: 3, value: 'U', name: 'U Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRacRyScjIqmYZnjbU6tvqKrIWmB9PtAuSSQh7wnuziq3MygiFw' },
@@ -33,20 +35,27 @@ export class KitchenComponent implements OnInit {
   C: Unit = { feet: 0, inches: 0, type: Dimension.HEIGHT };
 
   product1Brands: any;
-  selectedBrand1 = { id: 1, name: 'Ply Board', title: 'Ply and Board', categories: [1, 2] };
-  options2 = { id: 2, name: 'Inner Laminate', title: 'Inner Laminate', categories: [1, 2] };
-  options3 = { id: 3, name: 'Outer Finish', title: 'Outer Finish', categories: [1, 2] };
-  option4 = { id: 4, name: 'Hinges', title: 'Hinges', categories: [1, 2] };
-  option5 = { id: 5, name: 'Channels', title: 'Channels', categories: [1, 2] };
-  option6 = { id: 6, name: 'Full', title: 'Full Size', categories: [3] };
-  option7 = { id: 7, name: 'Border', title: 'Border and Corners', categories: [3] }
+  selectedBrand1;
+  product2Brands: any;
+  selectedBrand2;
+  product3Brands: any;
+  selectedBrand3;
+  product4Brands: any;
+  selectedBrand4;
+  product5Brands: any;
+  selectedBrand5;
+  product6Brands: any;
+  selectedBrand6;
+  product7Brands: any;
+  selectedBrand7;
+  product8Brands: any;
+  selectedBrand8;
 
   constructor(private fb: FormBuilder, private readonly dataService: DataService) { }
 
   ngOnInit() {
 
-    this.product1Brands = this.dataService.getBrands().filter(x => x.productID === 1);
-    this.selectedBrand1 = _.first(this.product1Brands);
+    this.initializeBrands();
     this.selectedItem = { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' };
     this.kitchenImage = this.selectedItem.imageUrl;
     this.kitchenProducts = this.dataService.getProducts().filter(x => x.categories.filter(y => y === this.kitchenCategoryID));
@@ -54,9 +63,37 @@ export class KitchenComponent implements OnInit {
 
   }
 
+  initializeBrands() {
+    this.product1Brands = this.dataService.getBrands().filter(x => x.productID === 1);
+    this.selectedBrand1 = _.first(this.product1Brands);
+
+    this.product2Brands = this.dataService.getBrands().filter(x => x.productID === 2);
+    this.selectedBrand2 = _.first(this.product2Brands);
+
+    this.product3Brands = this.dataService.getBrands().filter(x => x.productID === 3);
+    this.selectedBrand3 = _.first(this.product3Brands);
+
+    this.product4Brands = this.dataService.getBrands().filter(x => x.productID === 4);
+    this.selectedBrand4 = _.first(this.product4Brands);
+
+    this.product5Brands = this.dataService.getBrands().filter(x => x.productID === 5);
+    this.selectedBrand5 = _.first(this.product5Brands);
+
+    this.product6Brands = this.dataService.getBrands().filter(x => x.productID === 6);
+    this.selectedBrand6 = _.first(this.product6Brands);
+
+    this.product7Brands = this.dataService.getBrands().filter(x => x.productID === 7);
+    this.selectedBrand7 = _.first(this.product7Brands);
+
+    this.product8Brands = this.dataService.getBrands().filter(x => x.productID === 8);
+    this.selectedBrand8 = _.first(this.product8Brands);
+
+  }
+
 
   onRadioChange(event) {
-    this.selectedItem = this.kitchens.filter(x => x.value === event.value)[0];
+    const value = event.target.attributes['ng-reflect-value'].value;
+    this.selectedItem = this.kitchens.filter(x => x.value === value)[0];
     this.kitchenImage = this.selectedItem.imageUrl;
   }
 

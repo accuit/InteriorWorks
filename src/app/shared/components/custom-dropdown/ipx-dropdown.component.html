@@ -1,24 +1,8 @@
-<!-- <div class="row">
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-3 control-label">{{product.title}}</label>
-        <div class="col-sm-4">
-            <select class="form-control" 
-            [id]="inputId"
-            [name]="name"
-            (change)="onValueChange($event)" 
-            (focus)="onTouched()" 
-            [disabled]="isDisabled">
-                <option disabled hidden>-- Select a Brand --</option>
-                <option *ngFor="let brand of brands" [value]="brand.id">
-                    {{brand.title}}
-                </option>
-            </select>
-        </div>
-    </div>
-</div> -->
+
 <div class="row">
     <div class="form-group">
-        <label class="col-sm-3 control-label" [attr.for]="identifier"> {{label}}</label>
+        <label class="col-sm-4 control-label" [attr.for]="identifier"> {{label}}</label>
+        <div class="col-sm-6">
             <select class="form-control" [attr.id]="identifier" [(ngModel)]="value" (change)="change(value)" #selectref
                 [ngClass]="{ 'edited' :controledited()}">
                 <option *ngIf="isOptional" value="">{{ optionalValue }}</option>
@@ -27,5 +11,6 @@
                     <!-- <span *ngIf="!applyTranslate">{{ (displayField ? item[displayField] : item)}}</span> -->
                 </option>
             </select>
+        </div>
     </div>
 </div>

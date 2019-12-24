@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
-import { IgxRadioGroupDirective } from '../shared/directive/radio/radio-group.directive';
+import { IpxRadioButtonGroupDirective } from '../shared/directive/radio/radio-group.directive';
 
 @Component({
   selector: 'app-calculator',
@@ -7,7 +7,7 @@ import { IgxRadioGroupDirective } from '../shared/directive/radio/radio-group.di
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit, AfterContentInit {
-  @ViewChild('radioGroupZZ', { read: IgxRadioGroupDirective, static: true }) public radioGroup: IgxRadioGroupDirective;
+  @ViewChild('radioGroupZZ', { read: IpxRadioButtonGroupDirective, static: true }) public radioGroup: IpxRadioButtonGroupDirective;
 
   items: any = [
     { key: 1, value: 'Kitchen' },

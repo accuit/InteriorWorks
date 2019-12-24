@@ -7,10 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DevPagesRoutingModule } from './dev-pages-routing.module';
 import { DropdownExampleComponent } from './dropdown/dropdown-example.component';
+import { RadiobuttonExampleComponent } from './radio-button/radiobutton-example.component';
 
 
 @NgModule({
-  declarations: [ComboBoxExampleComponent, DevPagesComponent, DropdownExampleComponent],
+  declarations: [ComboBoxExampleComponent, DevPagesComponent, DropdownExampleComponent, RadiobuttonExampleComponent],
   imports: [
     CommonModule,
     FormsModule,

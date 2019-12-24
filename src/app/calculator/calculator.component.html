@@ -20,11 +20,11 @@
                         <div class="description">
                             <!-- <ipx-radio-button [items]="items" [(ngModel)]="selectedItem.value" (change)="switchItems($event)" ></ipx-radio-button> -->
                        
-                            <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="Kitchen" required="true" (change)="onRadioChange($event)">
+                            <!-- <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="Kitchen" required="true" (change)="onRadioChange($event)">
                                 <ipx-radio class="radio-sample" *ngFor="let item of items" value="{{item.value}}">
                                     {{item.value}}
                                 </ipx-radio>
-                            </ipx-radio-group>
+                            </ipx-radio-group> -->
                         </div>
                         {{selectedItem | json}}
                         <app-kitchen *ngIf="selectedItem.key === 1"></app-kitchen>

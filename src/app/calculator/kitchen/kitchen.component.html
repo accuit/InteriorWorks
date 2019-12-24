@@ -6,12 +6,20 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-            <!-- <ipx-radio-button [items]="kitchens" [(ngModel)]="selectedItem.value" (_change)="switchKitchenLayout($event)" ></ipx-radio-button> -->
-            <ipx-radio-group #radioGroupZZ name="radiogroupZZ" value="L" required="true" (change)="onRadioChange($event)">
-                <ipx-radio class="radio-sample" *ngFor="let item of kitchens" value="{{item.value}}">
+            <!-- <ipx-radio-button-group #radioGroupZZ name="radiogroupZZ" value="L" required="true" (change)="onRadioChange($event)">
+                <ipx-radio-buton class="radio-sample" *ngFor="let item of kitchens" value="{{item.value}}">
                     {{item.name}}
-                </ipx-radio>
-            </ipx-radio-group>
+                </ipx-radio-buton>
+            </ipx-radio-button-group> -->
+
+            <ipx-radio-button-group id="radioGroupOptions" name="radioGroupOptions" [(ngModel)]="layout" >
+                <ipx-radio-button apply-edited class="radio-sample" *ngFor="let item of kitchens;  trackBy: item;" value="{{item.value}}" (change)="onRadioChange($event)">
+                  {{ item.name }}
+                </ipx-radio-button>
+              </ipx-radio-button-group>
+
+              {{layout}}
+
         </div>
     <div class="post-image opacity"><img [src]="kitchenImage"
             style="max-width: 700px; max-height: 300px;" [alt]="selectedItem.name" [title]="selectedItem.name"></div>
@@ -32,12 +40,13 @@
         <h3>Step 4</h3>
         <span class="price"> Kitchen Height</span>
     </div>
-    <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Roof Top
-    </label>
-    <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Standard
-    </label>
+    <ipx-radio-button-group id="radioGroupOptions" name="radioGroupOptions" [(ngModel)]="kitchenHeight">
+        <ipx-radio-button apply-edited class="radio-sample" *ngFor="let item of ['Roof Top', 'Standard'];  trackBy: item;" value="{{ item }}">
+          {{ item }}
+        </ipx-radio-button>
+      </ipx-radio-button-group>
+
+      {{kitchenHeight}}
 </div>
 
 <div class="col-md-12">
@@ -55,16 +64,16 @@
                 <h4>Brand</h4>
             </div>
         </div>
-    
-    
+     
+        <ipx-dropdown class="col-sm-8" [options]="product1Brands" [label]="'Ply and Board'" [displayField]="'name'" [(ngModel)]="selectedBrand1"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product2Brands" [label]="'Inner Laminate'" [displayField]="'name'" [(ngModel)]="selectedBrand2"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product3Brands" [label]="'Outer Finish'" [displayField]="'name'" [(ngModel)]="selectedBrand3"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product4Brands" [label]="'Hinges'" [displayField]="'name'" [(ngModel)]="selectedBrand4"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product5Brands" [label]="'Channels'" [displayField]="'name'" [(ngModel)]="selectedBrand5"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product6Brands" [label]="'Full Size'" [displayField]="'name'" [(ngModel)]="selectedBrand6"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product7Brands" [label]="'Border and Corners'" [displayField]="'name'" [(ngModel)]="selectedBrand7"></ipx-dropdown>
     </div>
- 
-    <ipx-dropdown class="col-sm-8" [options]="product1Brands" [label]="label" apply-edited [displayField]="'name'" required
-    [(ngModel)]="selectedBrand1"></ipx-dropdown>
 
-{{selectedBrand1| json}}
-
-   
 </div>
 
 <div class="col-md-12">

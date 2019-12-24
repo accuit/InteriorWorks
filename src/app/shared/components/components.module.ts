@@ -5,19 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ElementBaseComponent } from './element.base/element.base.component';
 import { TextFieldComponent } from './text-field/text-field.component';
-import { IgxRadioComponent } from './radio-button/radio-button.component';
 import { IpxDropdownComponent } from './custom-dropdown/ipx-dropdown.component';
+import { IpxRadioButtonComponent } from './radio-button/ipx-radio-button.component';
 
 
 
 @NgModule({
-  declarations: [ComboTextboxComponent, IpxDropdownComponent, ElementBaseComponent, TextFieldComponent, IgxRadioComponent],
+  declarations: [ComboTextboxComponent, IpxDropdownComponent, ElementBaseComponent, TextFieldComponent, IpxRadioButtonComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [ComboTextboxComponent, IpxDropdownComponent, ElementBaseComponent, TextFieldComponent, IgxRadioComponent],
+  exports: [ComboTextboxComponent, IpxDropdownComponent, ElementBaseComponent, TextFieldComponent, IpxRadioButtonComponent],
   entryComponents: [ IpxDropdownComponent, TextFieldComponent]
 })
 export class ComponentsModule { }

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Dimension } from '../shared/enums/app.enums';
 import { Unit } from '../shared/model/core.model';
 import { Kitchen } from '../calculator/kitchen/kitchen.component';
-import { IgxRadioGroupDirective } from '../shared/directive/radio/radio-group.directive';
+import { IpxRadioButtonGroupDirective } from '../shared/directive/radio/radio-group.directive';
 
 class Person {
   favoriteSeason: string;
@@ -42,7 +42,7 @@ export class DevPagesComponent implements OnInit {
     updateOn: 'blur'
   });
 
-  @ViewChild('radioGroupZZ', { read: IgxRadioGroupDirective, static: true }) public radioGroup: IgxRadioGroupDirective;
+  @ViewChild('radioGroupZZ', { read: IpxRadioButtonGroupDirective, static: true }) public radioGroup: IpxRadioButtonGroupDirective;
 
   selectedValue: any;
 

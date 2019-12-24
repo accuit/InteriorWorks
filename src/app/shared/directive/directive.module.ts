@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IgxRadioGroupDirective } from './radio/radio-group.directive';
-
-
+import { IpxRadioButtonGroupDirective } from './radio/radio-group.directive';
 
 @NgModule({
-  declarations: [IgxRadioGroupDirective],
-  exports: [IgxRadioGroupDirective],
+  declarations: [IpxRadioButtonGroupDirective],
+  exports: [IpxRadioButtonGroupDirective],
   imports: [
     CommonModule
   ]

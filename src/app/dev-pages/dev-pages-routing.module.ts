@@ -4,6 +4,7 @@ import { ComboBoxExampleComponent } from './combo-box-example/combo-box-example.
 import { DevPagesComponent } from './dev-pages.component';
 import { IpxDropdownComponent } from '../shared/components/custom-dropdown/ipx-dropdown.component';
 import { DropdownExampleComponent } from './dropdown/dropdown-example.component';
+import { RadiobuttonExampleComponent } from './radio-button/radiobutton-example.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'dropdown',
     component: DropdownExampleComponent
+  },
+  {
+    path: 'radio',
+    component: RadiobuttonExampleComponent
   }
 ];
 

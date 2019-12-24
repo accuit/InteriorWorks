@@ -19,7 +19,8 @@ export class DataService {
       { id: 4, name: 'Hinges', title: 'Hinges', categories: [1, 2] },
       { id: 5, name: 'Channels', title: 'Channels', categories: [1, 2] },
       { id: 6, name: 'Full', title: 'Full Size', categories: [3] },
-      { id: 7, name: 'Border', title: 'Border and Corners', categories: [3] }
+      { id: 7, name: 'Border', title: 'Border and Corners', categories: [3] },
+      { id: 8, name: 'Labour Work', title: 'Labour Work', categories: [3] }
       
 
     ];
