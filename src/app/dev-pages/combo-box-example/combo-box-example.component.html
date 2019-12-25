@@ -2,25 +2,61 @@
     <div class="container">
         <div class="bs-docs-section">
 
-            <ipx-combo-textbox [dimension]="dimension" name="A" [(ngModel)]="A"></ipx-combo-textbox>
+            <ipx-combo-textbox 
+                [label1]="'Feet'" 
+                [label2]="'Inches'" 
+                [textField1]="'feet'" 
+                [textField2]="'inches'" 
+                [label2]="'Inches'" 
+                [name]="'A'" 
+                [(ngModel)]="A" 
+                [minValue]="'0'" 
+                [maxValue]="30"
+                [placeholder1]="'Feet'" 
+                [placeholder2]="'Inches'">
+            </ipx-combo-textbox>
+        </div>
+    </div>
+</section>
 
-            <!-- <div class="bs-example col-sm-6">
-                <div  class="form-inline">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon" style="border-radius: 4px; border: 1px solid #ccc;">A</div>
-                            <div class="input-group-addon" style="background-color: #ffffff; border: 0px solid #ccc;">
-                                &nbsp; </div>
-                            <input class="form-control" id="exampleInputAmount" placeholder="Amount" type="text">
-                            <div class="input-group-addon">Feet</div>
-                            <div class="input-group-addon" style="background-color: #ffffff; border: 0px solid #ccc;">
-                                &nbsp; </div>
-                            <input class="form-control" id="exampleInputAmount" placeholder="Amount" type="text">
-                            <div class="input-group-addon">Inches</div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+<section class="page-section">
+    <div class="container">
+        <div class="bs-docs-section">
+
+            <ipx-combo-textbox 
+                [label1]="'Feet'" 
+                [label2]="'Inches'" 
+                [textField1]="'feet'" 
+                [textField2]="'inches'" 
+                [label2]="'Inches'" 
+                [name]="'B'" 
+                [(ngModel)]="B" 
+                [minValue]="'0'" 
+                [maxValue]="30"
+                [placeholder1]="'Feet'" 
+                [placeholder2]="'Inches'">
+            </ipx-combo-textbox>
+        </div>
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container">
+        <div class="bs-docs-section">
+
+            <ipx-combo-textbox 
+                [label1]="'Feet'" 
+                [label2]="'Inches'" 
+                [textField1]="'feet'" 
+                [textField2]="'inches'" 
+                [label2]="'Inches'" 
+                [name]="'C'" 
+                [(ngModel)]="C" 
+                [minValue]="'0'" 
+                [maxValue]="30"
+                [placeholder1]="'Feet'" 
+                [placeholder2]="'Inches'">
+            </ipx-combo-textbox>
         </div>
     </div>
 </section>

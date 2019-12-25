@@ -3,28 +3,63 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 import { Dimension } from '../../enums/app.enums';
 import { Unit } from '../../model/core.model';
 import { ElementBaseComponent } from '../element.base/element.base.component';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'ipx-combo-textbox',
     templateUrl: './combo-textbox.component.html',
     styleUrls: ['./combo-textbox.component.scss']
 })
-export class ComboTextboxComponent extends ElementBaseComponent<Unit> implements OnInit {
+export class ComboTextboxComponent extends ElementBaseComponent<any> implements OnInit {
 
-    @Input() dimension: Dimension;
-    @Input() suffix: string ;
     @Input() step: number = 1;
+    @Input('value1') value1: any;
+    @Input('value2') value2: any;
+    @Input('label1') label1: string;
+    @Input('label2') label2: string;
+    @Input('textField1') textField1: string;
+    @Input('textField2') textField2: string;
+    @Input('placeholder1') placeholder1: string;
+    @Input('placeholder2') placeholder2: string;
+    @Input() minValue: number = 0;
+    @Input() maxValue: number;
+    model: any;
 
-    minValue: number = 0;
-    maxValue: number = 100;
     availableControlKeys: string[] = ['Backspace', 'Space', 'ArrowUp', 'ArrowDown'];
 
     identifier: string;
 
     ngOnInit(): any {
-        // this.value === undefined ? { feet: 0, inches: 0, type: this.dimension } : this.value;
         this.identifier = this.getId('combo');
+        this.model = {};
     }
+
+    writeValue = (value: any) => {
+
+        if (value == null) {
+            this.value1 = '';
+            this.value2 = null;
+        } else {
+            this.value1 = value[this.textField1 || 'text1'];
+            this.value2 = value[this.textField2 || 'text2'];
+            this.model[this.textField1 || 'text1'] = this.value1;
+            this.model[this.textField2 || 'text2'] = this.value2;
+            //this.setTextField(this.isTextDisabled);
+            this.value = Object.assign(value, this.model);
+        }
+    };
+
+    change = (newValue: any): void => {
+        this.model[this.textField1 || 'text2'] = newValue;
+        this.value = Object.assign(this.value, this.model);
+        this._onChange(this.value);
+    };
+
+    change2 = (newValue: any): void => {
+        this.model[this.textField2 || 'text2'] = newValue;
+        this.value = Object.assign(this.value, this.model);
+        this._onChange(this.value);
+    };
 
     @HostListener('mousewheel', ['$event'])
     changeStep(event) {
@@ -39,13 +74,13 @@ export class ComboTextboxComponent extends ElementBaseComponent<Unit> implements
         }
     }
 
-    manageValue(event, currentValue, step, arrowChanged?, clipboardValue?): void {
+    manageValue(event, currentValue, currentTextBox, step, arrowChanged?, clipboardValue?): number {
         event.preventDefault();
 
         let newValue: number;
         let usedControlKeys;
         let charCode = String.fromCharCode(event.which).toLowerCase();
-
+        const textField = event.target.attributes['ng-reflect-name'].value;
         if (arrowChanged) {
             usedControlKeys = [arrowChanged];
         } else {
@@ -59,8 +94,20 @@ export class ComboTextboxComponent extends ElementBaseComponent<Unit> implements
         } else {
             newValue = this.inputValue(event.key, currentValue);
         }
-        // this.unit.feet = newValue;
-        this._onChange(newValue);
+        if (textField) {
+            this.model[textField] = newValue;
+            this.value = Object.assign(this.value, this.model);
+            this._onChange(this.value);
+
+            if (currentTextBox === 1) {
+                this.value1 = newValue;
+                return this.value1;
+            } else {
+                this.value2 = newValue;
+                return this.value2;
+            }
+
+        }
     }
 
     modifiedValue(usedControl, currentValue, stepChange) {
