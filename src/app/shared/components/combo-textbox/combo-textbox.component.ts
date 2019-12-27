@@ -13,6 +13,7 @@ import * as _ from 'underscore';
 export class ComboTextboxComponent extends ElementBaseComponent<any> implements OnInit {
 
     @Input() step: number = 1;
+    @Input('name') name: any;
     @Input('value1') value1: any;
     @Input('value2') value2: any;
     @Input('label1') label1: string;
@@ -23,6 +24,9 @@ export class ComboTextboxComponent extends ElementBaseComponent<any> implements 
     @Input('placeholder2') placeholder2: string;
     @Input() minValue: number = 0;
     @Input() maxValue: number;
+    @Output() focused: EventEmitter<any> = new EventEmitter();
+    @Output() blured: EventEmitter<any> = new EventEmitter();
+    @Output() valueChanged: EventEmitter<any> = new EventEmitter();
     model: any;
 
     availableControlKeys: string[] = ['Backspace', 'Space', 'ArrowUp', 'ArrowDown'];
@@ -74,6 +78,14 @@ export class ComboTextboxComponent extends ElementBaseComponent<any> implements 
         }
     }
 
+    sendFocusEvent(event):void {
+        this.focused.emit(event);
+      }
+    
+      sendBlurEvent(event):void {
+        this.blured.emit(event);
+      }
+
     manageValue(event, currentValue, currentTextBox, step, arrowChanged?, clipboardValue?): number {
         event.preventDefault();
 
@@ -98,7 +110,8 @@ export class ComboTextboxComponent extends ElementBaseComponent<any> implements 
             this.model[textField] = newValue;
             this.value = Object.assign(this.value, this.model);
             this._onChange(this.value);
-
+            this.onChange.emit(this.value);
+            this.valueChanged.emit(this.value);
             if (currentTextBox === 1) {
                 this.value1 = newValue;
                 return this.value1;
