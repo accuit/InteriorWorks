@@ -27,8 +27,9 @@ export class CalculatorComponent implements OnInit, AfterContentInit {
 }
 
   onRadioChange(event): any {
-    console.log(event);
-    this.selectedItem = this.items.filter(x=>x.value === event.value)[0];
+    console.log(event.target.attributes['ng-reflect-value'].value);
+    const val = event.target.attributes['ng-reflect-value'].value;
+    this.selectedItem = this.items.filter(x=>x.value === val)[0];
   }
 
 }
