@@ -24,13 +24,11 @@ export class KitchenComponent implements OnInit {
     { sides: 1, value: 'I', name: 'Single Side I Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp-Ob2Re5RoosQmTW08Wqco81kD3Pytyere6Bi4xBXOd3Z_T2a' },
     { sides: 2, value: 'P', name: 'Parallel Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYz187YumgO2l4JOZLdvwGtj1CMP7uKUlTaPg8Z-eVbVlgEaYw' },
   ];
-  kitchenImage: string;
+
   selectedKitchen: Kitchen;
   formData: any = {};
 
-  A: Unit = { feet: 0, inches: 0, type: Dimension.LENGTH };
-  B: Unit = { feet: 0, inches: 0, type: Dimension.WIDTH };
-  C: Unit = { feet: 0, inches: 0, type: Dimension.HEIGHT };
+
 
   product1Brands: any;
   selectedBrand1;
@@ -52,17 +50,22 @@ export class KitchenComponent implements OnInit {
   constructor(private fb: FormBuilder, private readonly dataService: DataService) { }
 
   ngOnInit() {
-
-    this.initializeBrands();
     this.initializeFormData();
+    this.initializeBrands();
+
 
     this.kitchenProducts = this.dataService.getProducts().filter(x => x.categories.filter(y => y === this.kitchenCategoryID));
   }
 
   initializeFormData() {
     this.formData.selectedKitchen = this.selectedKitchen = { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' };
-    this.kitchenImage = this.selectedKitchen.imageUrl;
     this.formData.kitchenHeight = 'Standard';
+
+    this.formData.A = { feet: 0, inches: 0, type: Dimension.LENGTH };
+    this.formData.B = this.formData.selectedKitchen.sides > 1 ? { feet: 0, inches: 0, type: Dimension.WIDTH }: null;
+    this.formData.C = this.formData.selectedKitchen.sides > 2 ? { feet: 0, inches: 0, type: Dimension.HEIGHT } : null;
+
+
   }
 
   initializeBrands() {
@@ -96,7 +99,7 @@ export class KitchenComponent implements OnInit {
   onRadioChange(event) {
     const value = event.target.attributes['ng-reflect-value'].value;
     this.formData.selectedKitchen = this.kitchens.filter(x => x.value === value)[0];
-    this.kitchenImage = this.selectedKitchen.imageUrl;
+
   }
 
   manageBrands(event) {

@@ -13,7 +13,7 @@
               </ipx-radio-button-group>
 
         </div>
-    <div class="post-image opacity"><img [src]="kitchenImage"
+    <div class="post-image opacity"><img [src]="formData.selectedKitchen.imageUrl"
             style="max-width: 700px; max-height: 300px;" [alt]="formData.selectedKitchen.name" [title]="formData.selectedKitchen.name"></div>
     </div>
 
@@ -22,9 +22,49 @@
         <h3>Step 3</h3>
         <span class="price">Input Kitchen Measurements</span>
     </div>
-    <!-- <ipx-combo-textbox *ngIf="selectedKitchen.sides > 0" [dimension]="A.type" name="A" [(ngModel)]="A"></ipx-combo-textbox>
-    <ipx-combo-textbox *ngIf="selectedKitchen.sides > 1" [dimension]="B.type" name="B" [(ngModel)]="B"></ipx-combo-textbox>
-    <ipx-combo-textbox *ngIf="selectedKitchen.sides > 2" [dimension]="C.type" name="C" [(ngModel)]="C"></ipx-combo-textbox> -->
+
+    <ipx-combo-textbox *ngIf="formData.selectedKitchen.sides > 0"
+    [label1]="'Feet'" 
+    [label2]="'Inches'" 
+    [textField1]="'feet'" 
+    [textField2]="'inches'" 
+    [label2]="'Inches'" 
+    [name]="'A'" 
+    [(ngModel)]="formData.A" 
+    [minValue]="'0'" 
+    [maxValue]="30"
+    [placeholder1]="'Feet'" 
+    [placeholder2]="'Inches'">
+</ipx-combo-textbox>
+    
+    
+<ipx-combo-textbox *ngIf="formData.selectedKitchen.sides > 1"
+  [label1]="'Feet'" 
+  [label2]="'Inches'" 
+  [textField1]="'feet'" 
+  [textField2]="'inches'" 
+  [label2]="'Inches'" 
+  [name]="'B'" 
+  [(ngModel)]="formData.B" 
+  [minValue]="'0'" 
+  [maxValue]="30"
+  [placeholder1]="'Feet'" 
+  [placeholder2]="'Inches'">
+</ipx-combo-textbox>
+
+<ipx-combo-textbox *ngIf="formData.selectedKitchen.sides > 2"
+  [label1]="'Feet'" 
+  [label2]="'Inches'" 
+  [textField1]="'feet'" 
+  [textField2]="'inches'" 
+  [label2]="'Inches'" 
+  [name]="'C'" 
+  [(ngModel)]="formData.C" 
+  [minValue]="'0'" 
+  [maxValue]="30"
+  [placeholder1]="'Feet'" 
+  [placeholder2]="'Inches'">
+</ipx-combo-textbox>
 </div>
 
 <div class="col-md-12" style="padding-bottom: 50px;">
