@@ -18,26 +18,20 @@
                             <span class="price">Choose the product</span>
                         </div>
                         <div class="description">
-                            <!-- <ipx-radio-button [items]="items" [(ngModel)]="selectedItem.value" (change)="switchItems($event)" ></ipx-radio-button> -->
-                       
-                            <!-- <ipx-radio-button-group #radioGroupZZ name="radiogroupZZ" value="Kitchen" required="true" (change)="onRadioChange($event)">
-                                <ipx-radio-button class="radio-sample" *ngFor="let item of items" value="{{item.value}}">
-                                    {{item.value}}
-                                </ipx-radio-button>
-                            </ipx-radio-button-group> -->
 
-                           <ipx-radio-button apply-edited class="radio-sample" *ngFor="let item of items;  trackBy: item;" value="{{item.value}}" 
-                                (change)="onRadioChange($event)">
-                                  {{ item.value }}
-                                </ipx-radio-button>
-                            
+                            <label *ngFor="let item of products">
+                                <input type="radio" name="product" (click)="formData.product = item"
+                                    (change)="onRadioChange(item)"
+                                    [checked]="item.value === formData.product.value">{{ item.value }}
+                            </label>
+
                         </div>
-                        {{selectedItem | json}}
-                        <app-kitchen *ngIf="selectedItem.key === 1"></app-kitchen>
+                        {{formData | json}}
+                        <app-kitchen *ngIf="formData.product.key === 1" (kitchenPrice)="getPrice($event, 1)"></app-kitchen>
                     </div>
                 </div>
             </div>
-           <app-price-estimate [title]="'Estimated Price'" [value]="'100'"></app-price-estimate>
+            <app-price-estimate [title]="'Estimated Price'" [value]="formData.totalPrice"></app-price-estimate>
         </div>
     </div>
 </section>

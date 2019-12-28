@@ -6,11 +6,10 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-            <ipx-radio-button-group id="radioGroupOptions" name="radioGroupOptions" [(ngModel)]="layout" >
-                <ipx-radio-button apply-edited class="radio-sample" *ngFor="let item of kitchens;  trackBy: item;" value="{{item.value}}" (change)="onRadioChange($event)">
-                  {{ item.name }}
-                </ipx-radio-button>
-              </ipx-radio-button-group>
+              <label *ngFor="let type of kitchens">
+                <input type="radio" name="kitchenType" (click)="formData.selectedKitchen = type" (change)="onKitchenChange(type)"
+                [checked]="type.name === formData.selectedKitchen.name">{{ type.name }}
+              </label>
 
         </div>
     <div class="post-image opacity"><img [src]="formData.selectedKitchen.imageUrl"
@@ -31,6 +30,7 @@
     [label2]="'Inches'" 
     [name]="'A'" 
     [(ngModel)]="formData.A" 
+    (valueChanged)="formData.totalArea = calculateArea()"
     [minValue]="'0'" 
     [maxValue]="30"
     [placeholder1]="'Feet'" 
@@ -45,7 +45,8 @@
   [textField2]="'inches'" 
   [label2]="'Inches'" 
   [name]="'B'" 
-  [(ngModel)]="formData.B" 
+  [(ngModel)]="formData.B"
+  (valueChanged)="formData.totalArea = calculateArea()" 
   [minValue]="'0'" 
   [maxValue]="30"
   [placeholder1]="'Feet'" 
@@ -60,6 +61,7 @@
   [label2]="'Inches'" 
   [name]="'C'" 
   [(ngModel)]="formData.C" 
+  (valueChanged)="formData.totalArea = calculateArea()"
   [minValue]="'0'" 
   [maxValue]="30"
   [placeholder1]="'Feet'" 
@@ -73,7 +75,7 @@
         <span class="price"> Kitchen Height</span>
     </div>
     <label *ngFor="let height of ['Standard','Roof Top']">
-      <input type="radio" name="options1" (click)="formData.kitchenHeight = height"
+      <input type="radio" name="kitchenHeight" (click)="formData.kitchenHeight = height"
       [checked]="height === formData.kitchenHeight">{{ height }}
     </label>
 </div>
@@ -94,13 +96,13 @@
             </div>
         </div>
      
-        <ipx-dropdown class="col-sm-8" [options]="product1Brands" [label]="'Ply and Board'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand1"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product2Brands" [label]="'Inner Laminate'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand2"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product3Brands" [label]="'Outer Finish'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand3"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product4Brands" [label]="'Hinges'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand4"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product5Brands" [label]="'Channels'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand5"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product6Brands" [label]="'Full Size'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand6"></ipx-dropdown>
-        <ipx-dropdown class="col-sm-8" [options]="product7Brands" [label]="'Border and Corners'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand7"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product1Brands" [label]="'Ply and Board'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand1" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product2Brands" [label]="'Inner Laminate'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand2" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product3Brands" [label]="'Outer Finish'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand3" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product4Brands" [label]="'Hinges'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand4" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product5Brands" [label]="'Channels'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand5" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product6Brands" [label]="'Full Size'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand6" (change)="calculateCostByBrand()"></ipx-dropdown>
+        <ipx-dropdown class="col-sm-8" [options]="product7Brands" [label]="'Border and Corners'" [displayField]="'name'" [(ngModel)]="formData.selectedBrand7" (change)="calculateCostByBrand()"></ipx-dropdown>
     </div>
 
 </div>

@@ -7,29 +7,40 @@ import { IpxRadioButtonGroupDirective } from '../shared/directive/radio/radio-gr
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit, AfterContentInit {
-  @ViewChild('radioGroupZZ', { read: IpxRadioButtonGroupDirective, static: true }) public radioGroup: IpxRadioButtonGroupDirective;
+  // @ViewChild('radioGroupZZ', { read: IpxRadioButtonGroupDirective, static: true }) public radioGroup: IpxRadioButtonGroupDirective;
 
-  items: any = [
-    { key: 1, value: 'Kitchen' },
-    { key: 2, value: 'Wardrobe' },
-    { key: 3, value: 'False Ceiling' },
-    { key: 4, value: 'Paint' }
+  products: MainProduct[] = [
+    { key: 1, value: 'Kitchen', cost: 0 },
+    { key: 2, value: 'Wardrobe' , cost: 0 },
+    { key: 3, value: 'False Ceiling', cost: 0  },
+    { key: 4, value: 'Paint', cost: 0  }
   ];
 
-  selectedItem = { key: 1, value: 'Kitchen' };
+  formData: any = {};
   constructor() { }
 
   ngOnInit() {
+    this.formData.totalPrice = 0;
   }
 
   ngAfterContentInit(): void {
+    this.formData.product = { key: 1, value: 'Kitchen' };
     // setTimeout(() => this.selectedItem = this.radioGroup.value);
-}
-
-  onRadioChange(event): any {
-    console.log(event.target.attributes['ng-reflect-value'].value);
-    const val = event.target.attributes['ng-reflect-value'].value;
-    this.selectedItem = this.items.filter(x=>x.value === val)[0];
   }
 
+  getPrice(cost, productType) {
+    this.products.find(x => x.key === productType).cost = cost;
+    this.formData.totalPrice = cost;
+  }
+
+  onRadioChange(event): any {
+    this.formData.product = event;
+  }
+
+}
+
+export class MainProduct {
+  key: number;
+  value: string;
+  cost: number;
 }

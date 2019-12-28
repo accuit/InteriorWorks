@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Product } from 'src/app/shared/model/product';
@@ -14,6 +14,7 @@ import * as _ from 'underscore';
 })
 export class KitchenComponent implements OnInit {
 
+  @Output() readonly kitchenPrice: EventEmitter<any> = new EventEmitter<any>();
   formGroup: FormGroup;
   kitchenProducts: Product[];
   kitchenCategoryID = 1;
@@ -28,24 +29,14 @@ export class KitchenComponent implements OnInit {
   selectedKitchen: Kitchen;
   formData: any = {};
 
-
-
   product1Brands: any;
-  selectedBrand1;
   product2Brands: any;
-  selectedBrand2;
   product3Brands: any;
-  selectedBrand3;
   product4Brands: any;
-  selectedBrand4;
   product5Brands: any;
-  selectedBrand5;
   product6Brands: any;
-  selectedBrand6;
   product7Brands: any;
-  selectedBrand7;
   product8Brands: any;
-  selectedBrand8;
 
   constructor(private fb: FormBuilder, private readonly dataService: DataService) { }
 
@@ -53,19 +44,18 @@ export class KitchenComponent implements OnInit {
     this.initializeFormData();
     this.initializeBrands();
 
-
     this.kitchenProducts = this.dataService.getProducts().filter(x => x.categories.filter(y => y === this.kitchenCategoryID));
   }
 
   initializeFormData() {
-    this.formData.selectedKitchen = this.selectedKitchen = { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' };
+    this.formData.totalPrice = 0;
+    this.formData.totalArea = 0;
+    this.formData.selectedKitchen = { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' };
     this.formData.kitchenHeight = 'Standard';
 
     this.formData.A = { feet: 0, inches: 0, type: Dimension.LENGTH };
-    this.formData.B = this.formData.selectedKitchen.sides > 1 ? { feet: 0, inches: 0, type: Dimension.WIDTH }: null;
+    this.formData.B = this.formData.selectedKitchen.sides > 1 ? { feet: 0, inches: 0, type: Dimension.WIDTH } : null;
     this.formData.C = this.formData.selectedKitchen.sides > 2 ? { feet: 0, inches: 0, type: Dimension.HEIGHT } : null;
-
-
   }
 
   initializeBrands() {
@@ -95,17 +85,45 @@ export class KitchenComponent implements OnInit {
 
   }
 
-
-  onRadioChange(event) {
-    const value = event.target.attributes['ng-reflect-value'].value;
-    this.formData.selectedKitchen = this.kitchens.filter(x => x.value === value)[0];
-
+  onKitchenChange(event) {
+    this.formData.selectedKitchen = event;
   }
 
-  manageBrands(event) {
-    console.log(event);
+  calculateCostByBrand(): number {
+    const area = this.formData.totalArea;
+    let totalCost: number = 0;
+    totalCost = +this.formData.selectedBrand1.price;
+    totalCost = totalCost + this.formData.selectedBrand2.price;
+    totalCost = totalCost + this.formData.selectedBrand3.price;
+    totalCost = totalCost + this.formData.selectedBrand4.price;
+    totalCost = totalCost + this.formData.selectedBrand5.price;
+    totalCost = totalCost + this.formData.selectedBrand6.price;
+    totalCost = totalCost + this.formData.selectedBrand7.price;
+    const cumulativeSum = totalCost * area
+    this.kitchenPrice.emit(cumulativeSum);
+    this.formData.totalPrice = cumulativeSum;
+    return cumulativeSum;
   }
 
+  calculateArea = (): number => {
+
+    const sideA = (+this.formData.A.feet + (+this.formData.A.inches) / 12); // Feet
+    const sideB = +this.formData.selectedKitchen.sides > 1 ? (+this.formData.B.feet + (+this.formData.B.inches) / 12) : 0; // Feet
+    const sideC = +this.formData.selectedKitchen.sides > 2 ? (+this.formData.C.feet + (+this.formData.C.inches) / 12) : 0; // Feet
+
+    if (this.formData.selectedKitchen.sides === 1) {
+      return Math.round(sideA);
+    }
+
+    if (this.formData.selectedKitchen.sides === 2) {
+      return Math.round(sideA * sideB)
+    }
+
+    if (this.formData.selectedKitchen.sides === 3) {
+      return Math.round(sideA * sideB * sideC)
+    }
+
+  };
 }
 
 export class Kitchen {
