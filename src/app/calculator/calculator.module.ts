@@ -7,11 +7,12 @@ import { CalculatorRoutingModule } from './calculator-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PriceEstimateComponent } from './price-estimate/price-estimate.component';
+import { WardrobeComponent } from './wardrobe/wardrobe.component';
 
 
 
 @NgModule({
-  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent],
+  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent, WardrobeComponent],
   imports: [
     CommonModule,
     FormsModule,

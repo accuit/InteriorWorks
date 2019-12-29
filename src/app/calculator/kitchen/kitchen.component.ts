@@ -60,28 +60,28 @@ export class KitchenComponent implements OnInit {
 
   initializeBrands() {
     this.product1Brands = this.dataService.getBrands().filter(x => x.productID === 1);
-    this.formData.selectedBrand1 = _.first(this.product1Brands);
+    this.formData.selectedBrand1 = null; //_.first(this.product1Brands);
 
     this.product2Brands = this.dataService.getBrands().filter(x => x.productID === 2);
-    this.formData.selectedBrand2 = _.first(this.product2Brands);
+    this.formData.selectedBrand2 = null;//_.first(this.product2Brands);
 
     this.product3Brands = this.dataService.getBrands().filter(x => x.productID === 3);
-    this.formData.selectedBrand3 = _.first(this.product3Brands);
+    this.formData.selectedBrand3 = null; // _.first(this.product3Brands);
 
     this.product4Brands = this.dataService.getBrands().filter(x => x.productID === 4);
-    this.formData.selectedBrand4 = _.first(this.product4Brands);
+    this.formData.selectedBrand4 = null; // _.first(this.product4Brands);
 
     this.product5Brands = this.dataService.getBrands().filter(x => x.productID === 5);
-    this.formData.selectedBrand5 = _.first(this.product5Brands);
+    this.formData.selectedBrand5 = null; //  _.first(this.product5Brands);
 
     this.product6Brands = this.dataService.getBrands().filter(x => x.productID === 6);
-    this.formData.selectedBrand6 = _.first(this.product6Brands);
+    this.formData.selectedBrand6 = null; //  _.first(this.product6Brands);
 
     this.product7Brands = this.dataService.getBrands().filter(x => x.productID === 7);
-    this.formData.selectedBrand7 = _.first(this.product7Brands);
+    this.formData.selectedBrand7 =  null; // _.first(this.product7Brands);
 
     this.product8Brands = this.dataService.getBrands().filter(x => x.productID === 8);
-    this.formData.selectedBrand8 = _.first(this.product8Brands);
+    this.formData.selectedBrand8 = null; //  _.first(this.product8Brands);
 
   }
 
@@ -92,13 +92,13 @@ export class KitchenComponent implements OnInit {
   calculateCostByBrand(): number {
     const area = this.formData.totalArea;
     let totalCost: number = 0;
-    totalCost = +this.formData.selectedBrand1.price;
-    totalCost = totalCost + this.formData.selectedBrand2.price;
-    totalCost = totalCost + this.formData.selectedBrand3.price;
-    totalCost = totalCost + this.formData.selectedBrand4.price;
-    totalCost = totalCost + this.formData.selectedBrand5.price;
-    totalCost = totalCost + this.formData.selectedBrand6.price;
-    totalCost = totalCost + this.formData.selectedBrand7.price;
+    totalCost = this.formData.selectedBrand1.price ? +this.formData.selectedBrand1.price : 0;
+    totalCost = this.formData.selectedBrand2 ? (totalCost + this.formData.selectedBrand2.price) : totalCost;
+    totalCost = this.formData.selectedBrand3 ? (totalCost + this.formData.selectedBrand3.price) : totalCost;
+    totalCost = this.formData.selectedBrand4 ? (totalCost + this.formData.selectedBrand4.price) : totalCost;
+    totalCost = this.formData.selectedBrand5 ? (totalCost + this.formData.selectedBrand5.price) : totalCost;
+    totalCost = this.formData.selectedBrand6 ? (totalCost + this.formData.selectedBrand6.price) : totalCost;
+    totalCost = this.formData.selectedBrand7 ? (totalCost + this.formData.selectedBrand7.price) : totalCost;
     const cumulativeSum = totalCost * area
     this.kitchenPrice.emit(cumulativeSum);
     this.formData.totalPrice = cumulativeSum;

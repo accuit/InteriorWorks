@@ -28,6 +28,7 @@
                         </div>
                         {{formData | json}}
                         <app-kitchen *ngIf="formData.product.key === 1" (kitchenPrice)="getPrice($event, 1)"></app-kitchen>
+                        <app-wardrobe *ngIf="formData.product.key === 2"></app-wardrobe>
                     </div>
                 </div>
             </div>
