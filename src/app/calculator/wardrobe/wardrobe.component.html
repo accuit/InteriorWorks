@@ -16,7 +16,7 @@
         <span class="price">Input Wardrobe Measurements</span>
     </div>
 
-    <ipx-combo-textbox *ngIf="formData.wardrobe.sides > 0"
+    <ipx-combo-textbox
     [label1]="'Feet'" 
     [label2]="'Inches'" 
     [textField1]="'feet'" 
@@ -32,7 +32,7 @@
 </ipx-combo-textbox>
     
     
-<ipx-combo-textbox *ngIf="formData.wardrobe.sides > 1"
+<ipx-combo-textbox
   [label1]="'Feet'" 
   [label2]="'Inches'" 
   [textField1]="'feet'" 
@@ -46,31 +46,16 @@
   [placeholder1]="'Feet'" 
   [placeholder2]="'Inches'">
 </ipx-combo-textbox>
-
-<ipx-combo-textbox *ngIf="formData.wardrobe.sides > 2"
-  [label1]="'Feet'" 
-  [label2]="'Inches'" 
-  [textField1]="'feet'" 
-  [textField2]="'inches'" 
-  [label2]="'Inches'" 
-  [name]="'C'" 
-  [(ngModel)]="formData.C" 
-  (valueChanged)="formData.totalArea = calculateArea()"
-  [minValue]="'0'" 
-  [maxValue]="30"
-  [placeholder1]="'Feet'" 
-  [placeholder2]="'Inches'">
-</ipx-combo-textbox>
 </div>
 
 <div class="col-md-12" style="padding-bottom: 50px;">
     <div class="price-details">
-        <h3>Step 4</h3>
-        <span class="price"> Kitchen Height</span>
+        <h3>Input Wardrbe Measurements</h3>
+        <span class="price"> Slider Required</span>
     </div>
-    <label *ngFor="let height of ['Standard','Roof Top']">
-      <input type="radio" name="kitchenHeight" (click)="formData.kitchenHeight = height"
-      [checked]="height === formData.kitchenHeight">{{ height }}
+    <label *ngFor="let slider of ['Yes','No']">
+      <input type="radio" name="isSlider" (click)="formData.isSlider = slider"
+      [checked]="slider === formData.isSlider">{{ slider }}
     </label>
 </div>
 

@@ -92,7 +92,7 @@ export class KitchenComponent implements OnInit {
   calculateCostByBrand(): number {
     const area = this.formData.totalArea;
     let totalCost: number = 0;
-    totalCost = this.formData.selectedBrand1.price ? +this.formData.selectedBrand1.price : 0;
+    totalCost = this.formData.selectedBrand1 ? +this.formData.selectedBrand1.price : 0;
     totalCost = this.formData.selectedBrand2 ? (totalCost + this.formData.selectedBrand2.price) : totalCost;
     totalCost = this.formData.selectedBrand3 ? (totalCost + this.formData.selectedBrand3.price) : totalCost;
     totalCost = this.formData.selectedBrand4 ? (totalCost + this.formData.selectedBrand4.price) : totalCost;
