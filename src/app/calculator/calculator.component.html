@@ -31,6 +31,7 @@
                         <app-wardrobe *ngIf="formData.product.key === 2" (wardrobePrice)="getPrice($event, 2)"></app-wardrobe>
                         <app-false-ceiling *ngIf="formData.product.key === 3" (ceilingPrice)="getPrice($event, 3)"></app-false-ceiling>
                         <app-paint *ngIf="formData.product.key === 4" (paintPrice)="getPrice($event, 4)"></app-paint>
+                        <app-tiles *ngIf="formData.product.key === 5" (tilesPrice)="getPrice($event, 5)"></app-tiles>
                     </div>
                 </div>
             </div>

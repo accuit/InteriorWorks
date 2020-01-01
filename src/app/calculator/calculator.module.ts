@@ -10,11 +10,12 @@ import { PriceEstimateComponent } from './price-estimate/price-estimate.componen
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { FalseCeilingComponent } from './false-ceiling/false-ceiling.component';
 import { PaintComponent } from './paint/paint.component';
+import { TilesComponent } from './tiles/tiles.component';
 
 
 
 @NgModule({
-  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent, WardrobeComponent, FalseCeilingComponent, PaintComponent],
+  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent, WardrobeComponent, FalseCeilingComponent, PaintComponent, TilesComponent],
   imports: [
     CommonModule,
     FormsModule,
