@@ -11,7 +11,8 @@ export class CalculatorComponent implements OnInit, AfterContentInit {
     { key: 1, value: 'Kitchen', cost: 0 },
     { key: 2, value: 'Wardrobe', cost: 0 },
     { key: 3, value: 'False Ceiling', cost: 0 },
-    { key: 4, value: 'Paint', cost: 0 }
+    { key: 4, value: 'Paint', cost: 0 },
+    { key: 5, value: 'Tiles', cost: 0 }
   ];
 
   formData: any = {};
@@ -26,8 +27,9 @@ export class CalculatorComponent implements OnInit, AfterContentInit {
   }
 
   getPrice(cost, productType) {
-    this.products.find(x => x.key === productType).cost += cost;
-    this.formData.totalPrice = +this.formData.totalPrice + +cost;
+    this.products.find(x => x.key === productType).cost = cost;
+
+    this.formData.totalPrice  = this.products.reduce((a, b) => a + b.cost, 0);
   }
 
   onRadioChange(event): any {

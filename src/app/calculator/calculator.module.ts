@@ -8,11 +8,13 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PriceEstimateComponent } from './price-estimate/price-estimate.component';
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
+import { FalseCeilingComponent } from './false-ceiling/false-ceiling.component';
+import { PaintComponent } from './paint/paint.component';
 
 
 
 @NgModule({
-  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent, WardrobeComponent],
+  declarations: [KitchenComponent, CalculatorComponent, PriceEstimateComponent, WardrobeComponent, FalseCeilingComponent, PaintComponent],
   imports: [
     CommonModule,
     FormsModule,
