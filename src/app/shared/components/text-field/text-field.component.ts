@@ -1,21 +1,29 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ElementBaseComponent } from '../element.base/element.base.component';
 
 @Component({
-  selector: 'ipx-text-field',
-  templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.scss']
+    selector: 'ipx-text-field',
+    templateUrl: './text-field.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextFieldComponent extends ElementBaseComponent<string> implements OnInit {
+export class IpxTextFieldComponent extends ElementBaseComponent<string> implements OnInit {
+    @Input() label: string;
+    @Input() rows: number | undefined;
+    @Input() mask: boolean;
+    @Input() placeholder: string;
+    @Input() errorParam: any;
 
-  @Input() label: string;
-  @Input() placeholder: string;
-  @Input() mask: boolean;
+    getCustomErrorParams = () => ({
+        errorParam: this.errorParam
+    });
+    multiLine = false;
+    identifier: string;
 
-  identifier: string;
-
-  ngOnInit(): any {
-      this.identifier = this.getId('textfield');
-  }
-
+    ngOnInit(): any {
+        this.identifier = this.getId('textfield');
+        this.multiLine = this.el.nativeElement.hasAttribute('multiline');
+        if (this.multiLine && this.rows === undefined) {
+            this.rows = 2;
+        }
+    }
 }
