@@ -20,7 +20,7 @@
         <h3>Type of False Ceiling</h3>
         <span class="price"> Type of False Ceiling</span>
     </div>
-    <label *ngFor="let type of ['Cover','Corner']">
+    <label class="radio-inline" *ngFor="let type of ['Cover','Corner']">
         <input type="radio" name="type" (click)="formData.type = type"  (change)="onCeilingTypeChange(type)" [checked]="type === formData.type">{{ type }}
     </label>
 </div>
@@ -28,22 +28,15 @@
 <div class="col-md-12" style="padding-bottom: 50px;">
     <div class="price-details">
         <h3>Type of False Ceiling</h3>
-        <span class="price"> Type of False Ceiling</span>
+        <span class="price">False Ceiling Includes</span>
     </div>
-    <ipx-checkbox class="checkbox-inline" label="Plain False Ceiling" name="fc_plain"
+    <ipx-checkbox class="checkbox-inline" label="Base" name="fc_plain"
         [(ngModel)]="formData.includes.plain" apply-edited disabled>
     </ipx-checkbox>
-    <ipx-checkbox class="checkbox-inline" label="Moulding Price" name="fc_plain"
+    <ipx-checkbox class="checkbox-inline" label="Moulding" name="fc_plain"
         [(ngModel)]="formData.includes.moulding" apply-edited disabled>
     </ipx-checkbox>
-    <ipx-checkbox class="checkbox-inline" label="Wall POP" name="fc_plain" [(ngModel)]="formData.includes.pop"
+    <ipx-checkbox class="checkbox-inline" label="POP" name="fc_plain" [(ngModel)]="formData.includes.pop"
         apply-edited disabled>
     </ipx-checkbox>
 </div>
-<div>
-    <form class="form-inline">
-      <button class="btn btn-default" type="submit" (click)="onSubmit()">Submit</button>
-    </form>
-  </div>
-
-  {{ formData | json}}

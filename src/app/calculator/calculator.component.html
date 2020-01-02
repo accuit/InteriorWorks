@@ -9,7 +9,6 @@
         <div class="row">
             <div class="col-sm-12 col-md-9 product-page">
                 <div class="row">
-
                     <!-- .product -->
                     <div class="col-md-12">
 
@@ -19,7 +18,7 @@
                         </div>
                         <div class="description">
 
-                            <label *ngFor="let item of products">
+                            <label class="radio-inline" *ngFor="let item of products">
                                 <input type="radio" name="product" (click)="formData.product = item"
                                     (change)="onRadioChange(item)"
                                     [checked]="item.value === formData.product.value">{{ item.value }}

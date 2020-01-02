@@ -53,7 +53,7 @@
         <h3>Input Wardrbe Measurements</h3>
         <span class="price"> Slider Required</span>
     </div>
-    <label *ngFor="let slider of ['Yes','No']">
+    <label class="radio-inline" *ngFor="let slider of ['Yes','No']">
       <input type="radio" name="isSlider" (click)="formData.isSlider = slider"
       [checked]="slider === formData.isSlider">{{ slider }}
     </label>
@@ -85,8 +85,3 @@
     </div>
 
 </div>
-
-<div>
-  {{ formData | json }}
-</div>
-

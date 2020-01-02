@@ -6,12 +6,12 @@
         <span class="price">Choose the Layout of Kitchen</span>
     </div>
     <div class="description">
-              <label *ngFor="let type of kitchens">
+              <label class="radio-inline" *ngFor="let type of kitchens">
                 <input type="radio" name="kitchenType" (click)="formData.selectedKitchen = type" (change)="onKitchenChange(type)"
                 [checked]="type.name === formData.selectedKitchen.name">{{ type.name }}
               </label>
 
-        </div>
+    </div>
     <div class="post-image opacity"><img [src]="formData.selectedKitchen.imageUrl"
             style="max-width: 700px; max-height: 300px;" [alt]="formData.selectedKitchen.name" [title]="formData.selectedKitchen.name"></div>
     </div>
@@ -74,7 +74,7 @@
         <h3>Step 4</h3>
         <span class="price"> Kitchen Height</span>
     </div>
-    <label *ngFor="let height of ['Standard','Roof Top']">
+    <label class="radio-inline" *ngFor="let height of ['Standard','Roof Top']">
       <input type="radio" name="kitchenHeight" (click)="formData.kitchenHeight = height"
       [checked]="height === formData.kitchenHeight">{{ height }}
     </label>
@@ -107,9 +107,6 @@
 
 </div>
 
-<div>
-  {{ formData | json }}
-</div>
 
 <!-- <div class="col-md-12">
     <div class="price-details">
