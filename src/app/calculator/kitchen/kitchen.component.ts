@@ -2,8 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Product } from 'src/app/shared/model/product';
-import { Brand } from 'src/app/shared/model/brand';
-import { Unit } from 'src/app/shared/model/core.model';
 import { Dimension } from 'src/app/shared/enums/app.enums';
 import * as _ from 'underscore';
 
@@ -20,10 +18,10 @@ export class KitchenComponent implements OnInit {
   kitchenCategoryID = 1;
   layout = 'L';
   kitchens: Kitchen[] = [
-    { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' },
-    { sides: 3, value: 'U', name: 'U Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRacRyScjIqmYZnjbU6tvqKrIWmB9PtAuSSQh7wnuziq3MygiFw' },
+    { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://interioreradotin.files.wordpress.com/2019/02/l-shape-kitchen-banner-4.jpg?w=775' },
+    { sides: 3, value: 'U', name: 'U Shape', imageUrl: 'http://digitalb2btrade.com/static/listing-image/1551787072u-shape.jpg' },
     { sides: 1, value: 'I', name: 'Single Side I Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp-Ob2Re5RoosQmTW08Wqco81kD3Pytyere6Bi4xBXOd3Z_T2a' },
-    { sides: 2, value: 'P', name: 'Parallel Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYz187YumgO2l4JOZLdvwGtj1CMP7uKUlTaPg8Z-eVbVlgEaYw' },
+    { sides: 2, value: 'P', name: 'Parallel Shape', imageUrl: 'http://royalkitchenworld.com/wp-content/uploads/2017/03/gallary_16_3.jpg' },
   ];
 
   selectedKitchen: Kitchen;
@@ -38,7 +36,7 @@ export class KitchenComponent implements OnInit {
   product7Brands: any;
   product8Brands: any;
 
-  constructor(private fb: FormBuilder, private readonly dataService: DataService) { }
+  constructor(private readonly dataService: DataService) { }
 
   ngOnInit() {
     this.initializeFormData();
@@ -50,7 +48,7 @@ export class KitchenComponent implements OnInit {
   initializeFormData() {
     this.formData.totalPrice = 0;
     this.formData.totalArea = 0;
-    this.formData.selectedKitchen = { sides: 2, value: 'L', name: 'L Shape', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7ab3mQ1hTGaubD5ikYglCyqCrvx0AYAU4wRCbF5Vvy6x9MWan' };
+    this.formData.selectedKitchen = _.first(this.kitchens);
     this.formData.kitchenHeight = 'Standard';
 
     this.formData.A = { feet: 0, inches: 0, type: Dimension.LENGTH };
@@ -87,6 +85,8 @@ export class KitchenComponent implements OnInit {
 
   onKitchenChange(event) {
     this.formData.selectedKitchen = event;
+    this.formData.B = this.formData.selectedKitchen.sides > 1 ? { feet: 0, inches: 0, type: Dimension.WIDTH } : null;
+    this.formData.C = this.formData.selectedKitchen.sides > 2 ? { feet: 0, inches: 0, type: Dimension.HEIGHT } : null;
   }
 
   calculateCostByBrand(): number {

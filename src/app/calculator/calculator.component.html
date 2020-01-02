@@ -11,21 +11,17 @@
                 <div class="row">
                     <!-- .product -->
                     <div class="col-md-12">
-
                         <div class="price-details">
                             <h3>Step 1</h3>
                             <span class="price">Choose the product</span>
                         </div>
                         <div class="description">
-
-                            <label class="radio-inline" *ngFor="let item of products">
+                            <label class="radio-inline" *ngFor="let item of formData.products">
                                 <input type="radio" name="product" (click)="formData.product = item"
                                     (change)="onRadioChange(item)"
                                     [checked]="item.value === formData.product.value">{{ item.value }}
                             </label>
-
                         </div>
-                        {{formData | json}}
                         <app-kitchen *ngIf="formData.product.key === 1" (kitchenPrice)="getPrice($event, 1)"></app-kitchen>
                         <app-wardrobe *ngIf="formData.product.key === 2" (wardrobePrice)="getPrice($event, 2)"></app-wardrobe>
                         <app-false-ceiling *ngIf="formData.product.key === 3" (ceilingPrice)="getPrice($event, 3)"></app-false-ceiling>
@@ -34,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <app-price-estimate [title]="'Estimated Price'" [value]="formData.totalPrice"></app-price-estimate>
+            <app-price-estimate [title]="'Estimated Price'" [items]="formData.products" [value]="formData.totalPrice"></app-price-estimate>
         </div>
     </div>
 </section>

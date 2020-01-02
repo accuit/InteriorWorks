@@ -3,6 +3,21 @@
         <div class="widget-title">
             <h3 class="title">{{ title }}: {{ value }}</h3>
         </div>
-
+        <ul class="latest-posts clearfix shop">
+            <li *ngFor="let item of items">
+                <div class="post-thumb">
+                    <img class="img-rounded" [src]="item.image" alt="{{ item.value }}" title="{{ item.value }}" width="84" height="84">
+                </div>
+                <div class="post-details">
+                    <div class="description">
+                        <a href="#">
+                            <!-- Text -->
+                            <h5>{{ item.value}}</h5>
+                        </a>
+                    </div>
+                    <div class="price"> Rs. {{ item.cost }}</div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
