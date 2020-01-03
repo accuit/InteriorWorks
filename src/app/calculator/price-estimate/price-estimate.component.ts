@@ -20,5 +20,5 @@ export class Item {
   key: string;
   value: string;
   cost: number;
-  image: string = 'http://placehold.it/84x84';
+  image: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT0am_nWvMKukVez3g9-l2Go0xg3pkjB7DMfTvcGwHRwZmG5i7u';
 }
