@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-price-estimate',
   templateUrl: './price-estimate.component.html',
-  styleUrls: ['./price-estimate.component.scss']
+  styleUrls: ['./price-estimate.component.scss', '../calculator.component.scss']
 })
 export class PriceEstimateComponent implements OnInit {
   @Input('items') items: Item[];

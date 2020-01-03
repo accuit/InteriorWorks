@@ -8,7 +8,7 @@ import * as _ from 'underscore';
 @Component({
   selector: 'app-kitchen',
   templateUrl: './kitchen.component.html',
-  styleUrls: ['./kitchen.component.scss']
+  styleUrls: ['./kitchen.component.scss', '../calculator.component.scss']
 })
 export class KitchenComponent implements OnInit {
 

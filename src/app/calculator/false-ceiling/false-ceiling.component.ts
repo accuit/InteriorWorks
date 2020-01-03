@@ -4,7 +4,7 @@ import { Dimension } from 'src/app/shared/enums/app.enums';
 @Component({
   selector: 'app-false-ceiling',
   templateUrl: './false-ceiling.component.html',
-  styleUrls: ['./false-ceiling.component.scss']
+  styleUrls: ['./false-ceiling.component.scss', '../calculator.component.scss']
 })
 export class FalseCeilingComponent implements OnInit {
   @Output() readonly ceilingPrice: EventEmitter<any> = new EventEmitter<any>();
@@ -53,7 +53,7 @@ export class FalseCeilingComponent implements OnInit {
     const basicPrice = area * 120;
     const sideA: number = +this.formData.A.feet + +(this.formData.A.inches / 12);
     const sideB: number = +this.formData.B.feet + +(this.formData.B.inches / 12);
-    const coverPrice = 2 * (sideA + sideB) * 360;
+    const coverPrice = 2 * (sideA + sideB) * 240;
     const mouldingPrice: number = this.formData.includes.moulding ? 40 * 2 * (sideA + sideB) : 0;
     const C = .25;
     const wallPOP: number = this.formData.includes.pop ? 22 * (2 * area + 2 * sideB * C + C * sideA) : 0;

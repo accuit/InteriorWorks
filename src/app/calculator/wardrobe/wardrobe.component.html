@@ -1,9 +1,8 @@
 <!-- .product -->
 <div class="col-md-12">
 
-    <div class="price-details">
-        <h3>Step 2</h3>
-        <span class="price">Provide Wardrobe Measurements</span>
+    <div>
+        <span class="step-title">STEP 2: Provide Wardrobe Measurements</span>
     </div>
 
     <div class="post-image opacity"><img src="../../../assets/img/Wardrobe/wardrobe.jpg"
@@ -11,9 +10,8 @@
     </div>
 
 <div class="col-md-12">
-    <div class="price-details">
-        <h3>Step 3</h3>
-        <span class="price">Input Wardrobe Measurements</span>
+    <div>
+        <span class="step-title">STEP 3: Input Wardrobe Measurements</span>
     </div>
 
     <ipx-combo-textbox
@@ -48,21 +46,26 @@
 </ipx-combo-textbox>
 </div>
 
-<div class="col-md-12" style="padding-bottom: 50px;">
-    <div class="price-details">
-        <h3>Input Wardrbe Measurements</h3>
-        <span class="price"> Slider Required</span>
+<div class="col-md-12">
+    <div>
+        <span class="step-title">STEP 4: Input Wardrobe Measurements</span>
     </div>
+    <div class="row">
+    <div class="col-md-3">
+    <span style="vertical-align: bottom;"> Slider Required: </span>
+</div>
+    <div class="col-md-6">
     <label class="radio-inline" *ngFor="let slider of ['Yes','No']">
       <input type="radio" name="isSlider" (click)="formData.isSlider = slider"
       [checked]="slider === formData.isSlider">{{ slider }}
     </label>
 </div>
+</div>
+</div>
 
 <div class="col-md-12">
-    <div class="price-details">
-        <h3>Step 5</h3>
-        <span class="price"> Material Quality / Brand Selection </span>
+    <div>
+        <span class="step-title">STEP 5: Material Quality / Brand Selection</span>
     </div>
     <div class="row">
 

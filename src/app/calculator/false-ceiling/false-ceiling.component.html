@@ -1,7 +1,6 @@
 <div class="col-md-12">
-    <div class="price-details">
-        <h3>Step 2</h3>
-        <span class="price">Input Area Measurements</span>
+    <div>
+        <span class="step-title">STEP 2: Input Area Measurements</span>
     </div>
 
     <ipx-combo-textbox [label1]="'Feet'" [label2]="'Inches'" [textField1]="'feet'" [textField2]="'inches'"
@@ -15,15 +14,14 @@
     </ipx-combo-textbox>
 </div>
 
-<div class="col-md-12" style="padding-bottom: 50px;">
-    <div class="price-details">
-        <h3>Type of False Ceiling</h3>
-        <span class="price"> Type of False Ceiling</span>
+<!-- <div class="col-md-12" style="padding-bottom: 50px;">
+    <div>
+        <span class="step-title">STEP 3: Type of False Ceiling</span>
     </div>
     <label class="radio-inline" *ngFor="let type of ['Cover','Corner']">
         <input type="radio" name="type" (click)="formData.type = type"  (change)="onCeilingTypeChange(type)" [checked]="type === formData.type">{{ type }}
     </label>
-</div>
+</div> -->
 <!-- 
 <div class="col-md-12" style="padding-bottom: 50px;">
     <div class="price-details">

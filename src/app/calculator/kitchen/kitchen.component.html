@@ -1,10 +1,12 @@
 <!-- .product -->
+<div class="row">
+
 <div class="col-md-12">
 
-    <div class="price-details">
-        <h3>Step 2</h3>
-        <span class="price">Choose the Layout of Kitchen</span>
+    <div>
+        <span class="step-title">STEP 2: Choose the Layout of Kitchen</span>
     </div>
+
     <div class="description">
               <label class="radio-inline" *ngFor="let type of kitchens">
                 <input type="radio" name="kitchenType" (click)="formData.selectedKitchen = type" (change)="onKitchenChange(type)"
@@ -17,11 +19,9 @@
     </div>
 
 <div class="col-md-12">
-    <div class="price-details">
-        <h3>Step 3</h3>
-        <span class="price">Input Kitchen Measurements</span>
+    <div>
+        <span class="step-title">STEP 3: Input Kitchen Measurements</span>
     </div>
-
     <ipx-combo-textbox *ngIf="formData.selectedKitchen.sides > 0"
     [label1]="'Feet'" 
     [label2]="'Inches'" 
@@ -69,10 +69,9 @@
 </ipx-combo-textbox>
 </div>
 
-<div class="col-md-12" style="padding-bottom: 50px;">
-    <div class="price-details">
-        <h3>Step 4</h3>
-        <span class="price"> Kitchen Height</span>
+<div class="col-md-12" style="padding-bottom: 10px;">
+    <div>
+        <span class="step-title">STEP 4: Kitchen Height</span>
     </div>
     <label class="radio-inline" *ngFor="let height of ['Standard','Roof Top']">
       <input type="radio" name="kitchenHeight" (click)="formData.kitchenHeight = height"
@@ -81,10 +80,9 @@
 </div>
 
 <div class="col-md-12">
-    <div class="price-details">
-        <h3>Step 5</h3>
-        <span class="price"> Material Quality / Brand Selection </span>
-    </div>
+    <div>
+      <span class="step-title">STEP 5: Material Quality / Brand Selection </span>
+  </div>
     <div class="row">
 
         <div class="form-group">
@@ -135,3 +133,5 @@
         <input type="checkbox" id="inlineCheckbox7" value="option7"> Chminey
       </label>
 </div> -->
+
+</div>
