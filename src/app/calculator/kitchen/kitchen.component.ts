@@ -76,7 +76,7 @@ export class KitchenComponent implements OnInit {
     this.formData.selectedBrand6 = null; //  _.first(this.product6Brands);
 
     this.product7Brands = this.dataService.getBrands().filter(x => x.productID === 7);
-    this.formData.selectedBrand7 =  null; // _.first(this.product7Brands);
+    this.formData.selectedBrand7 = null; // _.first(this.product7Brands);
 
     this.product8Brands = this.dataService.getBrands().filter(x => x.productID === 8);
     this.formData.selectedBrand8 = null; //  _.first(this.product8Brands);
@@ -99,7 +99,7 @@ export class KitchenComponent implements OnInit {
     totalCost = this.formData.selectedBrand5 ? (totalCost + this.formData.selectedBrand5.price) : totalCost;
     totalCost = this.formData.selectedBrand6 ? (totalCost + this.formData.selectedBrand6.price) : totalCost;
     totalCost = this.formData.selectedBrand7 ? (totalCost + this.formData.selectedBrand7.price) : totalCost;
-    const cumulativeSum = totalCost * area
+    const cumulativeSum = Math.round(totalCost * area)
     this.kitchenPrice.emit(cumulativeSum);
     this.formData.totalPrice = cumulativeSum;
     return cumulativeSum;
@@ -110,19 +110,9 @@ export class KitchenComponent implements OnInit {
     const sideA = (+this.formData.A.feet + (+this.formData.A.inches) / 12); // Feet
     const sideB = +this.formData.selectedKitchen.sides > 1 ? (+this.formData.B.feet + (+this.formData.B.inches) / 12) : 0; // Feet
     const sideC = +this.formData.selectedKitchen.sides > 2 ? (+this.formData.C.feet + (+this.formData.C.inches) / 12) : 0; // Feet
-
-    if (this.formData.selectedKitchen.sides === 1) {
-      return Math.round(sideA);
-    }
-
-    if (this.formData.selectedKitchen.sides === 2) {
-      return Math.round(sideA * sideB)
-    }
-
-    if (this.formData.selectedKitchen.sides === 3) {
-      return Math.round(sideA * sideB * sideC)
-    }
-
+    this.formData.totalArea = (sideA + sideB + sideC)
+    this.calculateCostByBrand();
+    return this.formData.totalArea;
   };
 }
 

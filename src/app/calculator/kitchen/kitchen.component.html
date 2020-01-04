@@ -3,8 +3,8 @@
 
 <div class="col-md-12">
 
-    <div>
-        <span class="step-title">STEP 2: Choose the Layout of Kitchen</span>
+    <div class="step-title">
+        <span>STEP 2: Choose the Layout of Kitchen</span >
     </div>
 
     <div class="description">
@@ -19,8 +19,8 @@
     </div>
 
 <div class="col-md-12">
-    <div>
-        <span class="step-title">STEP 3: Input Kitchen Measurements</span>
+    <div class="step-title"> 
+        <span>STEP 3: Input Kitchen Measurements</span>
     </div>
     <ipx-combo-textbox *ngIf="formData.selectedKitchen.sides > 0"
     [label1]="'Feet'" 
@@ -70,8 +70,8 @@
 </div>
 
 <div class="col-md-12" style="padding-bottom: 10px;">
-    <div>
-        <span class="step-title">STEP 4: Kitchen Height</span>
+    <div class="step-title">
+        <span>STEP 4: Kitchen Height</span>
     </div>
     <label class="radio-inline" *ngFor="let height of ['Standard','Roof Top']">
       <input type="radio" name="kitchenHeight" (click)="formData.kitchenHeight = height"
@@ -80,8 +80,8 @@
 </div>
 
 <div class="col-md-12">
-    <div>
-      <span class="step-title">STEP 5: Material Quality / Brand Selection </span>
+    <div class="step-title">
+      <span>STEP 5: Material Quality / Brand Selection </span>
   </div>
     <div class="row">
 
