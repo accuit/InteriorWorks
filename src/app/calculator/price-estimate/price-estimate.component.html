@@ -1,22 +1,14 @@
-<div class="sidebar col-sm-12 col-md-3">
+<div class="sidebar col-sm-12 col-md-4">
     <div class="widget">
         <div class="widget-title">
-            <h3 class="title">{{ title }}: {{ value }}</h3>
+            <h3 class="title">{{ title }}: <span style="color: red; padding-left: 15px;"> INR. {{ value }}</span></h3>
         </div>
-        <ul class="latest-posts clearfix shop">
+        <button type="button" class="btn btn-primary btn-xs">TALK TO AN EXPERT</button>
+        <ul class="clearfix shop">
             <li *ngFor="let item of items">
-                <div class="post-thumb">
-                    <img class="img-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT0am_nWvMKukVez3g9-l2Go0xg3pkjB7DMfTvcGwHRwZmG5i7u" alt="{{ item.value }}" title="{{ item.value }}" width="84" height="84">
-                </div>
-                <div class="post-details">
                     <div class="description">
-                        <a href="#">
-                            <!-- Text -->
-                            <h5>{{ item.value}}</h5>
-                        </a>
+                            <span style="text-transform:uppercase">{{ item.value}} PRICE:  INR. {{ item.cost }}</span>
                     </div>
-                    <div class="price"> Rs. {{ item.cost }}</div>
-                </div>
             </li>
         </ul>
     </div>
