@@ -8,7 +8,8 @@
     "build:server-app:prod":"./node_modules/.bin/ng run LaymanWoods:server",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prerender": "./node_modules/.bin/ts-node ./prerender.ts"
   },
   "private": true,
   "dependencies": {
