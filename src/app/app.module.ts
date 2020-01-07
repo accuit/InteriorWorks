@@ -9,11 +9,19 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { DevPagesModule } from './dev-pages/dev-pages.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
+import { ServicesComponent } from './services/services.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    ServicesComponent,
+    PortfolioComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,38 @@
 <div id="page">
+
   <!-- Page Loader -->
   <div id="pageloader">
     <div class="loader-item fa fa-spin text-color"></div>
   </div>
+<!-- Sticky Navbar -->
+<header id="sticker" class="sticky-navigation">
+    <!-- Sticky Menu -->
+    <div class="sticky-menu relative">
+        <!-- navbar -->
+        <div id="navigation" class="navbar navbar-default navbar-bg-light" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-top-header></app-top-header>
+                        <!-- Navbar Collapse -->
+                        <div id="topnav" class="navbar-collapse collapse">
+                            <!-- nav -->
+                            <ul class="nav navbar-nav">
+                                <li><a href="/" routerLinkActive="active" class="scroll">Home</a></li>
+                                <li><a href="about-us" routerLinkActive="active" class="scroll">About</a></li>
+                                <li><a href="/services" [routerLinkActive]="'active'" class="scroll">Services</a></li>
+                                <li><a routerLink="/portfolio" [routerLinkActive]="'active'" class="scroll">Portfolio</a></li>
+                                <li><a routerLink="/calculator" [routerLinkActive]="'active'" class="scroll">Price Calculator</a></li>
+                                <li><a routerLink="/contact-us" [routerLinkActive]="'active'" class="scroll">Contact us</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.col-md-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- navbar -->
+    </div><!-- Sticky Menu -->
+</header><!-- Sticky Navbar -->
+<!--- Menu -->
   <router-outlet></router-outlet>
 
   <footer id="footer">
