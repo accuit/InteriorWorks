@@ -14,5 +14,9 @@
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"
-  ]
+  ],
+    /* Additional informations to bootstrap Angular */
+    "angularCompilerOptions": {
+      "entryModule": "app/app.module#AppModule"
+    }
 }
