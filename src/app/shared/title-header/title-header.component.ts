@@ -10,6 +10,7 @@ export class TitleHeaderComponent implements OnInit, AfterViewInit {
   @Input('type') type: string;
   @Input('bg-image') bgImage: string;
   @Input('title') title: string;
+  @Input('subTitle') subTitle: string;
   @Input('parent') parent: string;
   @Input('parent-path') parentPath: string;
   @Input('current-page') current: string;
