@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'InteriorWorks';
+  title = 'LaymanWoods';
 
   constructor(private readonly router: Router) {
     // this.router.navigate(["/"]).then(result=>{window.location.href = '/home.html';})
